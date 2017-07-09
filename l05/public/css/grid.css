@@ -2,9 +2,16 @@
 	margin: 0;
 	padding: 0;
 }
+img{
+	width: 100%;
+}
+/*
+* GRID CSSS
+ */
+
 [class*='col-']{
 	float: left;
-	min-height: 200px;
+	/*min-height: 200px;*/
 }
 .col-1{
 	width: 8.3333%;
@@ -42,6 +49,9 @@
 .col-12{
 	width: 100%;
 }
+/*
+* COMMON CSS
+ */
 .clearfix:after, .clearfix:before{
 	clear: both;
 	display: table;
@@ -66,3 +76,26 @@
 .bg-blue{
 	background: blue; 
 }
+.text-center{
+	text-align: center;
+}
+
+/*
+* HEADER CSS
+ */
+header [class*='col-']{
+	min-height: 100px;
+}
+.search-form input{
+	width: 250px;
+	margin-top: 20px;
+    border-radius: 20px;
+    height: 35px;
+    border: none;
+    padding-left: 15px;
+}
+
+.search-form input:focus{
+	outline: none;
+}
+
