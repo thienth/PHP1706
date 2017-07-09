@@ -86,7 +86,7 @@ img{
 * HEADER CSS
  */
 header [class*='col-']{
-	min-height: 100px;
+	/*min-height: 100px;*/
 }
 .search-form input{
 	width: 250px;
@@ -114,4 +114,30 @@ header [class*='col-']{
     border: none;
     background: transparent;
     cursor: pointer;
+}
+.favor .unit{
+	float: right;
+    text-align: center;
+    padding-right: 20px;
+    border-right: 1px dashed #dedede;
+}
+.favor .unit:first-child{
+	border-right: none;
+	padding-left: 20px;
+}
+.favor .unit i{
+	font-size: 30px;
+}
+.favor .unit span{
+	display: block;
+}
+.favor{
+	margin-top: 15px;
+}
+.favor a{
+	text-decoration: none;
+	color: #ccc;
+}
+.favor a:hover{
+	color: #2ca9e1;
 }
