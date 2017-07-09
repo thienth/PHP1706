@@ -79,7 +79,9 @@ img{
 .text-center{
 	text-align: center;
 }
-
+.relative{
+	position: relative;
+}
 /*
 * HEADER CSS
  */
@@ -91,11 +93,25 @@ header [class*='col-']{
 	margin-top: 20px;
     border-radius: 20px;
     height: 35px;
-    border: none;
+    border: 1px solid #dedede;
     padding-left: 15px;
 }
-
+.search-form form{
+	display: inline-block;
+}
 .search-form input:focus{
 	outline: none;
+	border: 1px solid #2ca9e1;
+    box-shadow: 0 0 5px #2ca9e1;
 }
-
+.search-form button:focus{
+	outline: none;
+}
+.search-form button{
+	position: absolute;
+    top: 22px;
+    right: 13px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
