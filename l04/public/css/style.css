@@ -1,0 +1,133 @@
+div{
+	/*border:1px solid orange;*/
+}
+div p{
+	color: red;
+}
+div > p{
+	color: green;
+}
+div+p{
+	color: blue;
+}
+p:hover{
+	/*font-size: 30px;*/
+	color: purple;
+}
+a:active{
+	color: #000;
+	text-decoration: none;
+}
+a:visited{
+	color: red;
+}
+input:focus{
+	color: red;
+}
+
+nav{
+	background: #675d5d;
+	color: #fff;
+	position: relative;
+}
+
+nav ul{
+	list-style-type: none;
+    list-style: none;
+    padding: 0;
+}
+nav ul li{
+	display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+}
+nav ul li div{
+	display: none;
+	min-height: 200px;
+	background: lightgreen;
+	position: absolute;
+	top: 40px;
+	left: 0;
+	right: 0;
+}
+nav ul li:hover div{
+	display: block;
+}
+nav ul li:hover{
+	background: #000;
+}
+
+.top-post{
+	
+	min-height: 400px;
+}
+.second-line{
+	display: inline-block;
+	min-height: 300px;
+}
+.second-line>div{
+	min-height: 150px;
+}
+[class*='col-']{
+	display: inline-block;
+}
+.col-12{
+	width: 100%;
+}
+.col-9{
+	width: 75%;
+}
+.col-8{
+	width: 67%;
+}
+.col-6{
+	width: 49%;
+}
+.col-4{
+	width: 32%;
+}
+.col-3{
+	width: 24%;
+}
+.col-2{
+	width: 16%;
+}
+
+
+.bg-green{
+	background: green; 
+	min-height: 300px;
+}
+.bg-green{
+	min-height: 300px;
+	background: green; 
+}
+.bg-red{
+	min-height: 300px;
+	background: red; 
+}
+.bg-yellow{
+	min-height: 300px;
+	background: yellow; 
+}
+.bg-grey{
+	min-height: 300px;
+	background: grey; 
+}
+.bg-blue{
+	background: blue; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
