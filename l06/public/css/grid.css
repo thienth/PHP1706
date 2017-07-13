@@ -172,7 +172,10 @@ nav ul li a{
 	text-decoration: none;
 	color: #fff;
 }
-
+nav ul li a:hover{
+	background: #1095d0;
+    border-top: 2px solid #2dcffe;
+}
 
 
 
