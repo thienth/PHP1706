@@ -176,7 +176,40 @@ nav ul li a:hover{
 	background: #1095d0;
     border-top: 2px solid #2dcffe;
 }
+nav ul li>div{
+	min-height: 200px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 40px;
+	display: block;
+	clear: both;
+}
+nav ul li:hover > div{
+	display: block;
+}
+nav ul li .menu-unit{
+	width: 18%;
+    margin: 0 8px;
+    float: left;
+    border: 1px solid #000;
+    min-height: 200px;
+}
 
+/*nav ul li:hover > a:before{
+	bottom: 0;
+    left: 50%;
+    border: 2px solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(194,225,245,0);
+    border-bottom-color: #fff;
+    border-width: 6px;
+    margin-left: -6px;
+}*/
 
 
 
