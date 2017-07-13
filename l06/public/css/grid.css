@@ -5,6 +5,9 @@
 img{
 	width: 100%;
 }
+a{
+	text-decoration: none;
+}
 /*
 * GRID CSSS
  */
@@ -165,25 +168,28 @@ nav ul li{
 nav ul li:last-child{
 	border: none;
 }
-nav ul li a{
+nav ul li>a{
 	line-height: 40px;
 	display: block;
 	padding: 0 30px;
 	text-decoration: none;
 	color: #fff;
 }
-nav ul li a:hover{
+nav ul li>a:hover{
 	background: #1095d0;
     border-top: 2px solid #2dcffe;
 }
 nav ul li>div{
-	min-height: 200px;
+	/*min-height: 200px;*/
+	padding: 20px 0;
 	position: absolute;
 	left: 0;
 	right: 0;
 	top: 40px;
-	display: block;
+	display: none;
 	clear: both;
+	background: #fff;
+    box-shadow: 0 2px 1px 1px #ececec;
 }
 nav ul li:hover > div{
 	display: block;
@@ -192,10 +198,12 @@ nav ul li .menu-unit{
 	width: 18%;
     margin: 0 8px;
     float: left;
-    border: 1px solid #000;
-    min-height: 200px;
+    /*border: 1px solid #000;*/
+    /*min-height: 200px;*/
 }
-
+nav ul li .hyperlink{
+	color: #dedede;
+}
 /*nav ul li:hover > a:before{
 	bottom: 0;
     left: 50%;
@@ -211,8 +219,18 @@ nav ul li .menu-unit{
     margin-left: -6px;
 }*/
 
-
-
+/*
+* CONTENT
+ */
+.relate-title{
+	position: absolute;
+	left: 0;
+	right: 0;
+	min-height: 70px;
+	background: #000;
+	opacity: 0.6;
+	bottom: 0;
+}
 
 
 
