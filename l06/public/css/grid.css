@@ -227,11 +227,15 @@ nav ul li .hyperlink{
 	left: 0;
 	right: 0;
 	min-height: 70px;
-	background: #000;
-	opacity: 0.6;
+	background: rgba(0,0,0,.6);
+	color: #fff;
 	bottom: 0;
 }
-
+.relate-title a{
+	color: #fff;
+	font-size: 24px;
+	padding-left: 10px;
+}
 
 
 
