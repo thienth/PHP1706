@@ -1,0 +1,12 @@
+/*.col-6{
+	display: inline-block;
+	min-height: 300px;
+	width: 50%;
+	background: green;
+}
+@media screen and (max-width: 668px){
+    .col-6{
+		width:100%;
+		background: lightblue;
+	}
+}*/
