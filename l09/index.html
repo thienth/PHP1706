@@ -6,9 +6,52 @@
 	<title></title>
 	<link rel="stylesheet" href="">
 </head>
-<body>
-	hello world!!!!
-	test something
+<body onload="changeBtnText('thienth')">
+	<script>
+		function changeBtnText(text){
+			document.getElementById('btn').innerText = text;
+		}
+
+	</script>
+	<button id="btn" type="button" ondbclick="CountEvent()">Click me!</button>
+
+
+
+	<div>
+		<h2 id="target"></h2>
+		<input type="text"  value="t3h">
+		<input type="text"  value="t3h">
+		<input type="text"  value="t3h">
+		<input type="text"  value="t3h">
+	</div>
+	<div>
+		<select onchange="selectChange(this)" >
+			<option value="1">vietname</option>
+			<option value="2">cambodia</option>
+		</select>
+	</div>
+	<script>
+
+		var inputArr = document.getElementsByTagName('input');
+
+		var h2Target = document.getElementById('target');
+
+		h2Target.innerHTML = '<a href="#">t3h php1706</a>';
+
+		for (var i = 0; i < inputArr.length; i++) {
+			inputArr[i].addEventListener('focus', function(e){
+				console.log(e.target.value);
+				// blurEvent(e.target);
+				e.target.blur();
+			});
+		}
+		function blurEvent(e){
+			document.getElementById('target').innerText = e.value;
+		}
+		function selectChange(e){
+			console.log(e.value);
+		}
+	</script>
 	<script type="text/javascript" src="main.js"></script>
 </body>
 </html>
