@@ -37,12 +37,41 @@ function check(element){
 	if(element.innerText == ""){
 		element.innerText = turn;
 		element.style.color = color;
+		var winner = checkWinner(element);
+		if(winner) {
+			alert("chuc mung ban da chien thang");
+			start();
+			return;
+		}
 		color = turn == "X" ? "red" : "lightgreen";
 		turn = turn == "X" ? "O" : "X";
+
 	}
 }
 
+function checkWinner(element){
+	var flag = false;
+	// check hang ngang (y = nhau)
+	var listTd = 
+			document.querySelectorAll('[y="'+element.attributes.y.value+'"]');
+	var countTurn = 0;
+	for (var i = 0; i < listTd.length; i++) {
+		// listTd[i].style.background = "#ccc";
+		if(listTd[i].innerText == turn){
+			countTurn++;
+		}else{
+			countTurn = 0;
+		}
 
+		if(countTurn >= 5){
+			flag = true;
+			break;
+		}
+	}
+
+	// neu thang thi return true, chua thang return false
+	return flag;
+}
 
 
 
