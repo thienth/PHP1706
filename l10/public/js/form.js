@@ -13,19 +13,37 @@
 var selectTag = document.getElementById('select-cell');
 var tbodyTag = document.getElementById('playground');
 var option = '';
-for (var i = 1; i <=30 ; i++) {
+for (var i = 5; i <=30 ; i++) {
 	option += "<option value=" + i + ">"+i+"</option>";
 }
 selectTag.innerHTML = option;
+
+var turn = "X";
+var color = 'lightgreen';
 function start(){
 	var tbodyContent = "";
 	var playgroundSize = selectTag.value;
 	for (var i = 0; i < playgroundSize; i++) {
 		tbodyContent += "<tr>";
 		for (var j = 0; j < playgroundSize; j++) {
-			tbodyContent += "<td x=" + j + " y=" + i +"></td>";
+			tbodyContent += "<td onclick='check(this)' x=" + j + " y=" + i +"></td>";
 		}
 		tbodyContent += "</tr>";
 	}
 	tbodyTag.innerHTML = tbodyContent;
 }
+
+function check(element){
+	if(element.innerText == ""){
+		element.innerText = turn;
+		element.style.color = color;
+		color = turn == "X" ? "red" : "lightgreen";
+		turn = turn == "X" ? "O" : "X";
+	}
+}
+
+
+
+
+
+
