@@ -70,7 +70,61 @@ function checkWinner(element){
 	}
 
 	// neu thang thi return true, chua thang return false
-	return flag;
+	if(flag){
+		return flag;
+	}
+
+	countTurn = 0;
+	// Check theo hang doc (x = nhau)
+	var listTd = 
+			document.querySelectorAll('[x="'+element.attributes.x.value+'"]');
+	var countTurn = 0;
+	for (var i = 0; i < listTd.length; i++) {
+		// listTd[i].style.background = "#ccc";
+		if(listTd[i].innerText == turn){
+			countTurn++;
+		}else{
+			countTurn = 0;
+		}
+
+		if(countTurn >= 5){
+			flag = true;
+			break;
+		}
+	}
+
+	// neu thang thi return true, chua thang return false
+	if(flag){
+		return flag;
+	}
+
+	// Check duong cheo tu phai sang trai diem dau tien se co toa do(x+y, 0)
+	countTurn = 0;
+	var customX = parseInt(element.attributes.x.value) + parseInt(element.attributes.y.value);
+	var customY = 0;
+	while(customX != -1){
+		var td = document
+					.querySelector('[x="' + customX + '"][y="' + customY + '"]');
+		td.style.background = '#ccc';
+		customX--; customY++;
+
+		if(td.innerText == turn){
+			countTurn++;
+		}else{
+			countTurn = 0;
+		}
+
+		if(countTurn >= 5){
+			flag = true;
+			break;
+		}
+	}
+
+	if(flag){
+		return flag;
+	}
+
+
 }
 
 
