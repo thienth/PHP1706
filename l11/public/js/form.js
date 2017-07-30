@@ -1,15 +1,3 @@
-/*function generate(){
-	history.back();
-	var countNumber = 
-	document.getElementById('countValue').value;
-	// var content = '';
-	// for (var i = 0; i <= countNumber; i++) {
-	// 	content += "<p> "+ i +"</p>";
-	// }
-	// document.getElementById('target').innerHTML = content;
-	// 
-	// window.location.href = "http://" + countNumber;
-}*/
 var selectTag = document.getElementById('select-cell');
 var tbodyTag = document.getElementById('playground');
 var option = '';
@@ -150,7 +138,6 @@ function checkWinner(element){
 		}
 		customX++; customY++;
 	}
-
 	if(flag){
 		return flag;
 	}
