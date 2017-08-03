@@ -20,3 +20,16 @@ function bai6(){
 	result = arr.join(" ");
 	console.log(result);
 }
+function bai9(){
+	var str = document.getElementById('b9').value;
+	var char = document.getElementById('b9Char').value;
+	var arr = str.split(" ");
+	
+	for (var i = 0; i < arr.length; i++) {
+		var pos = arr[i].indexOf(char);
+		if(pos != -1){
+			console.log(i+1);
+			break;
+		}
+	}
+}
