@@ -8,16 +8,25 @@
 </head>
 <body>
 	<input type="text" id="target" value="" placeholder="">
-	<button type="button" >Check</button>
-	<button type="button" >Check1</button>
-	<button type="button" >Check2</button>
-	<button type="button" >Check3</button>
-	<button type="button" >Check4</button>
+	<input type="radio" name="gender" value="Male" > Male
+	<input type="radio" value="Female"  name="gender" > Female
+	<input type="radio" value="Gay"  name="gender"> Gay
+	<input type="radio" value="Les"  name="gender"> Les
+	<button type="button">Check gender</button>
+	<h2></h2>
+	<h2></h2>
+	<h2></h2>
+	<h2></h2>
 	<script type="text/javascript" src="public/js/jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			$('#target').on('keydown', function(){
+				var value = $('#target').val();
+				$('h2').text(value);
+			});
+
 			$('button').on('click', function(){
-				$('#target').val('hello jquery');
+				$('h2').text($('input[type=radio]:checked').val());
 			});
 		});
 	</script>
