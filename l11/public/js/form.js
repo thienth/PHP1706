@@ -1,15 +1,3 @@
-/*function generate(){
-	history.back();
-	var countNumber = 
-	document.getElementById('countValue').value;
-	// var content = '';
-	// for (var i = 0; i <= countNumber; i++) {
-	// 	content += "<p> "+ i +"</p>";
-	// }
-	// document.getElementById('target').innerHTML = content;
-	// 
-	// window.location.href = "http://" + countNumber;
-}*/
 var selectTag = document.getElementById('select-cell');
 var tbodyTag = document.getElementById('playground');
 var option = '';
@@ -43,6 +31,7 @@ function check(element){
 			start();
 			return;
 		}
+		debugger;
 		color = turn == "X" ? "red" : "lightgreen";
 		turn = turn == "X" ? "O" : "X";
 
@@ -100,30 +89,58 @@ function checkWinner(element){
 
 	// Check duong cheo tu phai sang trai diem dau tien se co toa do(x+y, 0)
 	countTurn = 0;
-	var customX = parseInt(element.attributes.x.value) + parseInt(element.attributes.y.value);
+	var customX = parseInt(element.attributes.x.value) 
+						+ parseInt(element.attributes.y.value);
 	var customY = 0;
 	while(customX != -1){
 		var td = document
-					.querySelector('[x="' + customX + '"][y="' + customY + '"]');
-		td.style.background = '#ccc';
+			.querySelector('[x="' + customX + '"][y="' + customY + '"]');
+		if(td != null){
+
+			if(td.innerText == turn){
+				countTurn++;
+			}else{
+				countTurn = 0;
+			}
+
+			if(countTurn >= 5){
+				flag = true;
+				break;
+			}
+		}
 		customX--; customY++;
-
-		if(td.innerText == turn){
-			countTurn++;
-		}else{
-			countTurn = 0;
-		}
-
-		if(countTurn >= 5){
-			flag = true;
-			break;
-		}
 	}
 
 	if(flag){
 		return flag;
 	}
 
+	// Check duong cheo tu trai sang phai diem dau tien se co toa do(x-y, 0)
+	countTurn = 0;
+	var customX = parseInt(element.attributes.x.value) 
+						- parseInt(element.attributes.y.value);
+	var customY = 0;
+	while(customY <= parseInt(selectTag.value)){
+		var td = document
+			.querySelector('[x="' + customX + '"][y="' + customY + '"]');
+		if(td != null){
+
+			if(td.innerText == turn){
+				countTurn++;
+			}else{
+				countTurn = 0;
+			}
+
+			if(countTurn >= 5){
+				flag = true;
+				break;
+			}
+		}
+		customX++; customY++;
+	}
+	if(flag){
+		return flag;
+	}
 
 }
 
