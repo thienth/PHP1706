@@ -126,7 +126,9 @@
 		function drawCheckout(){
 			$('tbody').empty();
 			var ckUnit = "";
+			var totalMoney = 0;
 			for (var i = 0; i < cart.length; i++) {
+				totalMoney += cart[i].price * cart[i].quantity;
 				ckUnit += `
 					<tr>
 						<td>${cart[i].id}</td>
@@ -146,6 +148,13 @@
 					</tr>			
 				`;
 			}
+			ckUnit += `
+				<tr>
+					<td colspan="4">Total Price</td>
+					<td><b>$${totalMoney}</b></td>
+				</tr>	
+			`;
+
 			$('tbody').append(ckUnit);
 		}
 	</script>
