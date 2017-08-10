@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style>
+		img{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="container">
+		<br>
+		<br>
+		<div class="col-md-3" id="pro-1">
+			<div class="col-xs-6 col-xs-offset-3" >
+				<img src="http://www.coca-colaproductfacts.com/content/dam/productfacts/us/productDetails/ProductImages/Coke_12oz.png" alt="">
+			</div>
+			<h2 id="productName">Coca cola</h2>
+			<p><b>$<span id="price">25</span></b></p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+			<button type="button" productId="1" class="btn btn-sm btn-warning add2cart">Add to cart</button>
+		</div>
+		<div class="col-md-3" id="pro-2">
+			<div class="col-xs-6 col-xs-offset-3" >
+				<img src="https://www.pepsi.com/en-us/assets/cans/grey.png" alt="">
+			</div>
+			<h2 id="productName">Pepsi Grey</h2>
+			<p><b>$<span id="price">22</span></b></p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+			<button type="button" productId="2" class="btn btn-sm btn-warning add2cart">Add to cart</button>
+		</div>
+		<div class="col-md-3" id="pro-3">
+			<div class="col-xs-6 col-xs-offset-3" >
+				<img src="http://www.freedomcart.com/image/cache/catalog/data/Products/Mirinda_330ml_Wet_CAn_2B_AaramShop-700x700.jpg" alt="">
+			</div>
+			<h2 id="productName">Mirinda</h2>
+			<p><b>$<span id="price">20</span></b></p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+			<button type="button" productId="3" class="btn btn-sm btn-warning add2cart">Add to cart</button>
+		</div>
+		<div class="col-md-3" id="pro-4">
+			<div class="col-xs-6 col-xs-offset-3" >
+				<img src="http://www.ruoungoai.ninja/images/products/vodka-ca-sau-xanh_thumb.jpg" alt="">
+			</div>
+			<h2 id="productName">Vodka Cá sấu</h2>
+			<p><b>$<span id="price">15</span></b></p>
+			<p>Cảm xúc chỉ có thể tốt hơn!</p>
+			<button type="button" productId="4" class="btn btn-sm btn-warning add2cart">Add to cart</button>
+		</div>
+		
+		<table class="table table-stripped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Product name</th>
+					<th width="100">Image</th>
+					<th></th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>2</td>
+					<td>Pepsi Grey</td>
+					<td>
+						<img src="https://www.pepsi.com/en-us/assets/cans/grey.png" alt="">
+					</td>
+					<td>
+						<input type="number" name="" value="1" min="0" step="1">
+						<button type="button" class="btn btn-xs btn-info">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</td>
+					<td>
+						<b>$<span class="unit-price">22</span></b>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">Total Price</td>
+					<td ><b>$<span class="unit-price">22</span></b></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript" src='public/js/jquery.min.js'></script>
+	<script type="text/javascript">
+		var cart = [];
+		$(document).ready(function(){
+			
+			$('.add2cart').on('click', function(){
+				var proId = $(this).attr('productId');
+				
+				var pName = $('#pro-'+proId).children('#productName').text();
+				var imgUrl = $('#pro-'+proId).find('img').attr('src');
+				var price = $('#pro-'+proId).find('#price').text();
+				var obj = {
+					id: proId,
+					productName: pName,
+					imageUrl: imgUrl,
+					price: price
+				};
+
+				// Check san pham co trong gio hang hay chua
+				var flag = false;
+				for (var i = 0; i < cart.length; i++) {
+					if(cart[i].id == obj.id){
+						flag = true;
+						break;
+					}
+				}
+				// san pham chua co trong gio hang
+				if(flag === false){
+					obj.quantity = 1;
+					cart.push(obj);
+				}else{ // san pham da co trong gio hang
+					cart[i].quantity += 1;
+				}
+				drawCheckout();
+			});
+		});
+		function drawCheckout(){
+			$('tbody').empty();
+			var ckUnit = "";
+			var totalMoney = 0;
+			for (var i = 0; i < cart.length; i++) {
+				totalMoney += cart[i].price * cart[i].quantity;
+				ckUnit += `
+					<tr>
+						<td>${cart[i].id}</td>
+						<td>${cart[i].productName}</td>
+						<td>
+							<img src="${cart[i].imageUrl}" alt="">
+						</td>
+						<td>
+							<input type="number" onchange="changeUnitQuantity(this, ${cart[i].id})" name="" value="${cart[i].quantity}" min="0" step="1">
+							<button type="button" onclick="removeUnit(${cart[i].id})" class="btn btn-xs btn-info">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button>
+						</td>
+						<td>
+							<b>$<span class="unit-price">${cart[i].price * cart[i].quantity}</span></b>
+						</td>
+					</tr>			
+				`;
+			}
+			ckUnit += `
+				<tr>
+					<td colspan="4">Total Price</td>
+					<td><b>$${totalMoney}</b></td>
+				</tr>	
+			`;
+
+			$('tbody').append(ckUnit);
+		}
+		function removeUnit(id){
+			// Check san pham co trong gio hang hay chua
+			for (var i = 0; i < cart.length; i++) {
+				if(cart[i].id == id){
+					cart.splice(i, 1);
+					break;
+				}
+			}
+
+			drawCheckout();
+		}
+
+		function changeUnitQuantity(e, id){
+			var ipValue = e.value;
+			if(ipValue > 0){
+				for (var i = 0; i < cart.length; i++) {
+					if(cart[i].id == id){
+						cart[i].quantity = ipValue;
+						break;
+					}
+				}
+				drawCheckout();
+			}else{
+				removeUnit(id);
+			}
+		}
+	</script>
+</body>
+</html>
