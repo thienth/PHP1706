@@ -137,8 +137,8 @@
 							<img src="${cart[i].imageUrl}" alt="">
 						</td>
 						<td>
-							<input type="number" name="" value="${cart[i].quantity}" min="0" step="1">
-							<button type="button" class="btn btn-xs btn-info">
+							<input type="number" onchange="changeUnitQuantity(this, ${cart[i].id})" name="" value="${cart[i].quantity}" min="0" step="1">
+							<button type="button" onclick="removeUnit(${cart[i].id})" class="btn btn-xs btn-info">
 								<span class="glyphicon glyphicon-remove"></span>
 							</button>
 						</td>
@@ -156,6 +156,32 @@
 			`;
 
 			$('tbody').append(ckUnit);
+		}
+		function removeUnit(id){
+			// Check san pham co trong gio hang hay chua
+			for (var i = 0; i < cart.length; i++) {
+				if(cart[i].id == id){
+					cart.splice(i, 1);
+					break;
+				}
+			}
+
+			drawCheckout();
+		}
+
+		function changeUnitQuantity(e, id){
+			var ipValue = e.value;
+			if(ipValue > 0){
+				for (var i = 0; i < cart.length; i++) {
+					if(cart[i].id == id){
+						cart[i].quantity = ipValue;
+						break;
+					}
+				}
+				drawCheckout();
+			}else{
+				removeUnit(id);
+			}
 		}
 	</script>
 </body>
