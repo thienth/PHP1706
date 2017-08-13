@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>
+					<input type="checkbox" header="true">
+				</th>
+				<th>Title</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="checkbox" header="false"></td>
+				<td>Lorem ipsum dolor sit amet </td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" header="false"></td>
+				<td>Lorem ipsum dolor sit amet </td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" header="false"></td>
+				<td>Lorem ipsum dolor sit amet </td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript" src="public/js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('input[type=checkbox][header=true]').on('change', function(){
+				if($(this).is(':checked')){
+					$('input[type=checkbox][header=false]').prop('checked', true);
+				}else{
+					
+					$('input[type=checkbox][header=false]').prop('checked', false);
+				}
+			});
+
+			$('input[type=checkbox][header=false]').on('change', function(){
+				var allNonHeaderCheckbox = $('input[type=checkbox][header=false]').length;
+				var allNonHeaderCheckboxChecked = $('input[type=checkbox][header=false]:checked').length;
+				if($(this).is(':checked')){
+					if(allNonHeaderCheckbox === allNonHeaderCheckboxChecked){
+						$('input[type=checkbox][header=true]').prop('checked', true);
+					}
+				}else{
+					
+					$('input[type=checkbox][header=true]').prop('checked', false);
+				}
+			});
+		});
+	</script>
+	
+</body>
+</html>

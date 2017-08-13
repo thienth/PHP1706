@@ -1,15 +1,3 @@
-/*function generate(){
-	history.back();
-	var countNumber = 
-	document.getElementById('countValue').value;
-	// var content = '';
-	// for (var i = 0; i <= countNumber; i++) {
-	// 	content += "<p> "+ i +"</p>";
-	// }
-	// document.getElementById('target').innerHTML = content;
-	// 
-	// window.location.href = "http://" + countNumber;
-}*/
 var selectTag = document.getElementById('select-cell');
 var tbodyTag = document.getElementById('playground');
 var option = '';
@@ -126,7 +114,33 @@ function checkWinner(element){
 	if(flag){
 		return flag;
 	}
-	return false;
+
+	// Check duong cheo tu trai sang phai diem dau tien se co toa do(x-y, 0)
+	countTurn = 0;
+	var customX = parseInt(element.attributes.x.value) 
+						- parseInt(element.attributes.y.value);
+	var customY = 0;
+	while(customY <= parseInt(selectTag.value)){
+		var td = document
+			.querySelector('[x="' + customX + '"][y="' + customY + '"]');
+		if(td != null){
+
+			if(td.innerText == turn){
+				countTurn++;
+			}else{
+				countTurn = 0;
+			}
+
+			if(countTurn >= 5){
+				flag = true;
+				break;
+			}
+		}
+		customX++; customY++;
+	}
+	if(flag){
+		return flag;
+	}
 
 }
 
