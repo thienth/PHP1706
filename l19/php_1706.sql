@@ -250,6 +250,22 @@ join Orders o
 where year(o.OrderDate) = 1998
 group by e.EmployeeID
 
+-- Bai 11
+select 
+	e.EmployeeID,
+	e.LastName,
+	e.FirstName,
+
+	e.HireDate,
+	count(o.OrderID) as 'total order' 
+from Employees e
+join Orders o
+	on o.EmployeeID = e.EmployeeID
+where year(o.OrderDate) between '1998-01-01' and '1998-07-31'
+group by e.EmployeeID
+
+
+
 
 
 
