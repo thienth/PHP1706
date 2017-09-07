@@ -264,7 +264,31 @@ join Orders o
 where year(o.OrderDate) between '1998-01-01' and '1998-07-31'
 group by e.EmployeeID
 
+-- Bai 14
+select 
+	concat(FirstName, ' ', LastName) as 'Full name',
+	TitleOfCourtesy,
+	if(TitleOfCourtesy = 'Mr.', 'Male', 'Female') as Sex
+from Employees
 
+
+-- Bai 15
+select 
+	concat(FirstName, ' ', LastName) as 'Full name',
+	TitleOfCourtesy,
+	if(TitleOfCourtesy = 'Mr.' or TitleOfCourtesy = 'Dr.', 'Male', 'Female') as Sex
+from Employees
+
+-- Bai 16
+select 
+	concat(FirstName, ' ', LastName) as 'Full name',
+	TitleOfCourtesy,
+	case 
+		when TitleOfCourtesy = 'Mr.' then 'Male'
+		when TitleOfCourtesy = 'Mrs.' or TitleOfCourtesy = 'Ms.' then 'Female'
+		else 'Unknown'
+	end as 'Sex'
+from Employees
 
 
 
