@@ -173,5 +173,16 @@ select
 from Customers
 where Country = 'UK'
 
+-- Bai 5
+select 
+	CustomerID,
+	CompanyName,
+	Address,
+
+	City,
+	Country
+from Customers
+where Country = 'Mexico'
+
 
 
