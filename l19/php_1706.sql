@@ -184,5 +184,62 @@ select
 from Customers
 where Country = 'Mexico'
 
+-- Bai 6
+SELECT
+	CustomerID,
+	CompanyName,
+	Phone as phone,
+	
+	Address as address,
+	City as city,
+	Country
+from Customers
+where Country = 'Sweden'
+
+-- Bai 7
+select 
+	ProductID,
+	ProductName,
+	UnitPrice,
+
+	UnitsInStock
+
+from Products
+where UnitsInStock between 5 and 10
+
+-- Bai 8
+select 
+	ProductID,
+	ProductName,
+	UnitPrice,
+
+	ReorderLevel,
+	UnitsOnOrder
+
+from Products
+where UnitsOnOrder between 60 and 100
+
+-- Bai 9
+select 
+	e.EmployeeID,
+	e.LastName,
+	e.FirstName,
+
+	e.Title,
+	year(o.OrderDate) as OrderYear,
+	count(o.OrderID) as 'total order' 
+from Employees e
+join Orders o
+on e.EmployeeID = o.EmployeeID
+group by e.EmployeeID
+having OrderYear = 1996
+
+
+
+
+
+
+
+
 
 
