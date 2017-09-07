@@ -125,7 +125,53 @@ group by OrderID
 select * from tên bảng
 limit số bản ghi sẽ bỏ qua, số bản ghi sẽ lấy tiếp
 
+-- Phép join - thực hiện lấy phần chung 
+-- của 2 tập dữ liệu trong 1 câu lệnh select
+select 
+		p.ProductID,
+		p.ProductName,
+		c.CategoryName,
+		s.CompanyName as SupplierCompany
+from Products p
+join Categories c 
+	on p.CategoryID = c.CategoryID
+join Suppliers s
+	on p.SupplierID = s.SupplierID
+where p.ProductID = 2
 
+-- Bai 1
+select 
+		concat(lower(FirstName), ' ', lower(LastName)) as 'Full name',
+		TitleOfCourtesy
+from Employees
+
+-- Bai 2
+select 
+		concat(upper(FirstName), ' ', upper(LastName)) as 'Full name'
+from Employees
+
+-- Bai 3
+select 
+		EmployeeID,
+		LastName,
+		FirstName,
+
+		Title,
+		City,
+		Country
+from Employees
+where Country = 'USA'
+
+-- Bai 4
+select 
+	CustomerID,
+	CompanyName,
+	ContactName,
+
+	ContactTitle,
+	Country
+from Customers
+where Country = 'UK'
 
 
 
