@@ -219,7 +219,8 @@ select
 from Products
 where UnitsOnOrder between 60 and 100
 
--- Bai 9
+-- Bai 9 - Lấy ra danh sách nhân viên 
+-- và liệt kê đươcj số hoá đơn họ bán được trong năm 1996
 select 
 	e.EmployeeID,
 	e.LastName,
@@ -233,6 +234,62 @@ join Orders o
 on e.EmployeeID = o.EmployeeID
 group by e.EmployeeID
 having OrderYear = 1996
+
+-- Bai 10
+select 
+	e.EmployeeID,
+	e.LastName,
+	e.FirstName,
+
+	e.City,
+	e.Country,
+	count(o.OrderID) as 'total order' 
+from Employees e
+join Orders o
+	on o.EmployeeID = e.EmployeeID
+where year(o.OrderDate) = 1998
+group by e.EmployeeID
+
+-- Bai 11
+select 
+	e.EmployeeID,
+	e.LastName,
+	e.FirstName,
+
+	e.HireDate,
+	count(o.OrderID) as 'total order' 
+from Employees e
+join Orders o
+	on o.EmployeeID = e.EmployeeID
+where year(o.OrderDate) between '1998-01-01' and '1998-07-31'
+group by e.EmployeeID
+
+-- Bai 14
+select 
+	concat(FirstName, ' ', LastName) as 'Full name',
+	TitleOfCourtesy,
+	if(TitleOfCourtesy = 'Mr.', 'Male', 'Female') as Sex
+from Employees
+
+
+-- Bai 15
+select 
+	concat(FirstName, ' ', LastName) as 'Full name',
+	TitleOfCourtesy,
+	if(TitleOfCourtesy = 'Mr.' or TitleOfCourtesy = 'Dr.', 'Male', 'Female') as Sex
+from Employees
+
+-- Bai 16
+select 
+	concat(FirstName, ' ', LastName) as 'Full name',
+	TitleOfCourtesy,
+	case 
+		when TitleOfCourtesy = 'Mr.' then 'Male'
+		when TitleOfCourtesy = 'Mrs.' or TitleOfCourtesy = 'Ms.' then 'Female'
+		else 'Unknown'
+	end as 'Sex'
+from Employees
+
 
 
 
