@@ -106,8 +106,24 @@ group by ProductID
 having InStockTotal > 0
 order by InStockTotal desc, ProductName desc, ProductID asc
 
+-- trong bảng order detail
+-- thực hiện câu lệnh lấy ra 
+-- orderid, productid, totalproductprice
+-- chỉ hiển thị các totalproductprice > 140
+-- và nhóm them orderid
 
+set global sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+set session sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+select 
+		OrderID,
+		ProductID,
+		sum(UnitPrice*Quantity) as `totalprice`
+from `Order Details` 
+group by OrderID
 
+-- limit - sử dụng để phân trang 
+select * from tên bảng
+limit số bản ghi sẽ bỏ qua, số bản ghi sẽ lấy tiếp
 
 
 
