@@ -320,6 +320,18 @@ where o.ShippedDate > o.RequiredDate
 order by delaydate DESC, o.OrderID desc
 limit 1
 
+-- Bai 28
+select 
+		c.CategoryID,
+		c.CategoryName,
+		count(p.ProductID) as 'TotalProduct'
+from Categories c
+join Products p 
+	on c.CategoryID = p.CategoryID
+group by c.CategoryID
+order by TotalProduct asc
+
+
 
 -- create database php_1706
 SET NAMES utf8;
