@@ -290,6 +290,73 @@ select
 	end as 'Sex'
 from Employees
 
+-- Bai 25
+select 
+	od.ProductID,
+	p.ProductName,
+	sum(od.Quantity) as 'Total Ordered',
+	
+	sum(od.Quantity*od.UnitPrice) as 'Total Price'
+from `Order Details` od
+join Products p
+	on p.ProductID = od.ProductID
+group by ProductID
+having sum(od.Quantity) > 1200
+
+-- Bai 36
+select 
+	o.OrderID,
+	o.EmployeeID,
+	concat(emp.FirstName, ' ', emp.LastName) as 'full name',
+	o.RequiredDate,
+
+	o.ShippedDate,
+	datediff(o.ShippedDate, o.RequiredDate) as delaydate
+
+from Orders o 
+join Employees emp
+	on o.EmployeeID = emp.EmployeeID
+where o.ShippedDate > o.RequiredDate
+order by delaydate DESC, o.OrderID desc
+limit 1
+
+-- Bai 28
+select 
+		c.CategoryID,
+		c.CategoryName,
+		count(p.ProductID) as 'TotalProduct'
+from Categories c
+join Products p 
+	on c.CategoryID = p.CategoryID
+group by c.CategoryID
+order by TotalProduct asc
+
+
+
+-- create database php_1706
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `users`
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(500) DEFAULT NULL,
+  `avatar` varchar(500) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
 
 
 
