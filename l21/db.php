@@ -1,8 +1,8 @@
 <?php 
 $servername = '127.0.0.1';
-$dbname = 'php_1706';
+$dbname = 'php1706';
 $dbusername = 'root';
-$dbpwd = '123456';
+$dbpwd = '';
 
 // Tao ket noi den csdl
 try {
