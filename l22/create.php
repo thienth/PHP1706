@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	<form action="save-user.php" method="post" >
+	<form action="save-user.php" method="post" enctype="multipart/form-data">
 		<div>
 			<input type="text" name="name" value="" placeholder="Name">
 		</div>
