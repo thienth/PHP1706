@@ -16,7 +16,8 @@ $model->title = $title;
 $model->content = $content;
 $model->created_by = $created_by;
 //4 save
-$model->update();
+$model = $model->update();
+
 //5 redirect ve trang chu (list.php)
 header('location: list.php');
 
