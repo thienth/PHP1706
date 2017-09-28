@@ -11,7 +11,7 @@ $listPost = Post::all();
  			<th>Content</th>
  			<th>Author</th>
  			<th>
- 				
+ 				<a href="add-post.php" title="">Add new</a>
  			</th>
  		</tr>
  	</thead>
