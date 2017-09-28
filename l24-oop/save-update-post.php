@@ -6,7 +6,7 @@ $title = $_POST['title'];
 $content = $_POST['content'];
 $created_by = $_POST['created_by'];
 //2 find model
-$model = Post::find($id);
+$model = new Post();
 if(!$model){
 	echo "<h1>Sai thông tin!</h1>";
 	die;
@@ -16,7 +16,8 @@ $model->title = $title;
 $model->content = $content;
 $model->created_by = $created_by;
 //4 save
-$model->update();
+$model = $model->insert();
+var_dump($model);die;
 //5 redirect ve trang chu (list.php)
 header('location: list.php');
 

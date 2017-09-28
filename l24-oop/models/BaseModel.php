@@ -11,12 +11,59 @@ class BaseModel
 		$this->connect = 
 				new PDO('mysql:host=127.0.0.1;
 					dbname=php_1706;charset=utf8', 'root', '123456');
+
+	}
+	public function insert(){
+		$this->queryBuilder = "insert into $this->tableName (";
+		foreach ($this->columns as $col) {
+			if($this->{$col} == null){
+				continue;
+			}
+			$this->queryBuilder .= "$col, ";
+		}
+		$this->queryBuilder = rtrim($this->queryBuilder, ", ");
+		$this->queryBuilder .= ") values ( ";
+		foreach ($this->columns as $col) {
+			if($this->{$col} == null){
+				continue;
+			}
+			$this->queryBuilder .= "'" . $this->{$col} ."', ";
+		}
+		$this->queryBuilder = rtrim($this->queryBuilder, ", ");
+		$this->queryBuilder .= ")";
+
+		$stmt = $this->connect->prepare($this->queryBuilder);
+		try{
+
+			$stmt->execute();
+			$this->id = $this->connect->lastInsertId();
+			return $this;
+		}catch(Exception $ex){
+			var_dump($ex->getMessage());die;
+		}
+
+	}
+
+
+	public function delete(){
+		$this->queryBuilder = "delete from $this->tableName where id = $this->id";
+		$stmt = $this->connect->prepare($this->queryBuilder);
+		try{
+
+			$stmt->execute();
+			return true;
+		}catch(Exception $ex){
+			var_dump($ex->getMessage());die;
+		}
 	}
 
 	public function update(){
 		$this->queryBuilder = "update $this->tableName set ";
 
 		foreach ($this->columns as $col) {
+			if($this->{$col} == null){
+				continue;
+			}
 			$this->queryBuilder .= " $col = '" . $this->{$col} . "', ";
 		}
 
