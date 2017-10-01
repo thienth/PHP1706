@@ -1,16 +1,16 @@
 <?php 
 
 $url = isset($_GET['r']) == true ? $_GET['r'] : "/";
+require_once 'controllers/HomeController.php';
+require_once 'controllers/Admin/PostController.php';
 switch ($url) {
 	case '/': // trang chu
-		
-
-		include_once 'views/client/homepage.php';
+		$ctl = new HomeController();
+		$ctl->index();
 		break;
 	case 'post':
-		require_once 'models/Post.php';
-		$posts = Post::all();
-		include_once 'views/client/post/index.php';
+		$ctl = new PostController();
+		$ctl->list();
 		break;
 	case 'admin/add-post':
 
