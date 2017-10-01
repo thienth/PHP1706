@@ -12,6 +12,7 @@ class Post extends BaseModel
 
 	public function getAuthorName(){
 		$author = User::find($this->created_by);
+		if(!$author) return null;
 		return $author->name;
 	}
 }
