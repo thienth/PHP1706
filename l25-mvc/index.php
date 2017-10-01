@@ -10,7 +10,7 @@ switch ($url) {
 		break;
 	case 'post':
 		$ctl = new PostController();
-		$ctl->list();
+		$ctl->listPost();
 		break;
 	case 'admin/add-post':
 
