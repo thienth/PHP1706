@@ -20,6 +20,9 @@
 				<a href="index.php?r=remove&id=<?php echo $p->id ?>" title="">
 					Remove
 				</a>
+				<a href="index.php?r=update-post&id=<?php echo $p->id ?>" title="">
+					Update
+				</a>
 			</td>
 		</tr>
 		<?php endforeach ?>
