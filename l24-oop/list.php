@@ -35,7 +35,8 @@ $listPost = Post::all();
 	 				<?= $p->getAuthorName()?>
 	 			</td>
 	 			<td>
-	 				
+	 				<a href="update.php?id=<?php echo $p->id ?>" title="">Update</a>
+	 				<a href="remove-post.php?id=<?php echo $p->id ?>" title="">Remove</a>
 	 			</td>
 	 		</tr>
  			<?php
