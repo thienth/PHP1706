@@ -10,7 +10,11 @@ class BaseModel
 	{
 		$this->connect = 
 				new PDO('mysql:host=127.0.0.1;
+<<<<<<< HEAD
 					dbname=php1706;charset=utf8', 'root', '');
+=======
+					dbname=php_1706;charset=utf8', 'root', '123456');
+>>>>>>> master
 
 	}
 	public function insert(){
