@@ -48,12 +48,12 @@ class CustomRoute
 
 						// lay ngay thang nam cua 15 ngay sau
 						$date = date("Y-m-d");
-						$exiredDate = date("Y-m-d", 
+						$expiredDate = date("Y-m-d", 
 							strtotime(date("Y-m-d", strtotime($date)) . " +15 days"));
 
 						$rememberToken->user_id = $user->id;
 						$rememberToken->token = $token;
-						$rememberToken->exired_date = $exiredDate;
+						$rememberToken->expired_date = $expiredDate;
 						$rememberToken->insert(); // them du lieu moi vao csdl
 
 						// tao cookie
