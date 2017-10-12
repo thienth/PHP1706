@@ -51,7 +51,7 @@ class CustomRoute
 						$exiredDate = date("Y-m-d", 
 							strtotime(date("Y-m-d", strtotime($date)) . " +15 days"));
 
-						$rememberToken->user_id = $user_id;
+						$rememberToken->user_id = $user->id;
 						$rememberToken->token = $token;
 						$rememberToken->exired_date = $exiredDate;
 						$rememberToken->insert(); // them du lieu moi vao csdl
