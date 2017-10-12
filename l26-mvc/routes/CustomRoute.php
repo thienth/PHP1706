@@ -69,6 +69,25 @@ class CustomRoute
 				}
 				break;
 			case 'add-post':
+				$token = isset($_COOKIE['AUTH_TOKEN']) == true ? $_COOKIE['AUTH_TOKEN'] : null;
+				if($token != null){
+					$rm = RememberToken::where(['token', '=', $token])->first();
+					
+					$now = date_create(date('Y-m-d'));
+					$dbDate = date_create($rm->expired_date);
+					$dateDiff = date_diff($now, $dbDate);
+
+					if($dateDiff->days <= 15){
+						$user = User::find($rm->user_id);
+						$_SESSION['AUTH'] = [
+							'name' => $user->name,
+							'email' => $user->email,
+							'id' => $user->id
+						];
+					}
+				}
+
+
 				if(!isset($_SESSION['AUTH']) || $_SESSION['AUTH'] == null){
 					header('location: login');
 					die;
