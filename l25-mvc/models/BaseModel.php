@@ -10,7 +10,7 @@ class BaseModel
 	{
 		$this->connect = 
 				new PDO('mysql:host=127.0.0.1;
-					dbname=php_1706;charset=utf8', 'root', '123456');
+					dbname=test;charset=utf8', 'root', '');
 
 	}
 	public function insert(){
@@ -31,7 +31,6 @@ class BaseModel
 		}
 		$this->queryBuilder = rtrim($this->queryBuilder, ", ");
 		$this->queryBuilder .= ")";
-
 		$stmt = $this->connect->prepare($this->queryBuilder);
 		try{
 

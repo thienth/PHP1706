@@ -3,7 +3,7 @@
 * 
 */
 require_once 'controllers/HomeController.php';
-require_once 'controllers/PostController.php';
+require_once 'controllers/ProductsController.php';
 class CustomRoute
 {
 	static function clientRoute($url)
