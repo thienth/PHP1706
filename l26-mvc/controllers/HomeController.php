@@ -3,15 +3,16 @@
 * 
 */
 require_once 'models/Post.php';
-class PostController
+class HomeController
 {
 	
-	function listPost()
+	function index()
 	{
 		$posts = Post::all();
-		include_once 'views/client/post/index.php';
+		include_once 'views/client/homepage.php';
 	}
 }
+
 
 
  ?>
