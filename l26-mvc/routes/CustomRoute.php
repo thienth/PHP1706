@@ -57,9 +57,8 @@ class CustomRoute
 						$rememberToken->insert(); // them du lieu moi vao csdl
 
 						// tao cookie
+						setcookie("AUTH_TOKEN", $token, time()+(3600*24*15));
 					}
-
-
 
 					// var_dump($_SESSION['AUTH']);die;
 					header('location: index.php');
