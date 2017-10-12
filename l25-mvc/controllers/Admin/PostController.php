@@ -3,16 +3,15 @@
 * 
 */
 require_once 'models/products.php';
-class HomeController
+class PostController
 {
 	
-	function index()
+	function listPost()
 	{
 		$products = products::all();
-		include_once 'views/client/homepage.php';
+		include_once 'views/client/post/index.php';
 	}
 }
-
 
 
  ?>
