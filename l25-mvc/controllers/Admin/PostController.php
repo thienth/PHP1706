@@ -2,13 +2,13 @@
 /**
 * 
 */
-require_once 'models/Post.php';
+require_once 'models/products.php';
 class PostController
 {
 	
 	function listPost()
 	{
-		$posts = Post::all();
+		$products = products::all();
 		include_once 'views/client/post/index.php';
 	}
 }
