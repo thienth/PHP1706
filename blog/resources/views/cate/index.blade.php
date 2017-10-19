@@ -1,2 +1,6 @@
-cate name = {{$a}}
-<a href="{{route('homepage')}}" title="">Homepage</a>
+@extends('layout.client')
+@section('content')
+<div class="post">
+	cate name = {{$a}}
+</div>
+@endsection

@@ -32,8 +32,32 @@ class HomeController extends Controller
    				'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit non nesciunt aliquid a necessitatibus vitae pariatur architecto, soluta modi explicabo cumque illo voluptatem at rem distinctio magnam reprehenderit, sed! Ipsum.',
    				'image' => 'http://lorempixel.com/400/200'
    			],
+   			[
+   				'id' => 5,
+   				'title' => 'Lorem ipsum dolor sit amet',
+   				'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit non nesciunt aliquid a necessitatibus vitae pariatur architecto, soluta modi explicabo cumque illo voluptatem at rem distinctio magnam reprehenderit, sed! Ipsum.',
+   				'image' => 'http://lorempixel.com/400/200'
+   			],
+   			[
+   				'id' => 6,
+   				'title' => 'Lorem ipsum dolor sit amet',
+   				'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit non nesciunt aliquid a necessitatibus vitae pariatur architecto, soluta modi explicabo cumque illo voluptatem at rem distinctio magnam reprehenderit, sed! Ipsum.',
+   				'image' => 'http://lorempixel.com/400/200'
+   			],
+   			[
+   				'id' => 7,
+   				'title' => 'Lorem ipsum dolor sit amet',
+   				'content' => '<b>Lorem ipsum</b> dolor sit amet, consectetur adipisicing elit. Sit non nesciunt aliquid a necessitatibus vitae pariatur architecto, soluta modi explicabo cumque illo voluptatem at rem distinctio magnam reprehenderit, sed! Ipsum.',
+   				'image' => 'http://lorempixel.com/400/200'
+   			],
+   			[
+   				'id' => 8,
+   				'title' => 'Lorem ipsum dolor sit amet',
+   				'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit non nesciunt aliquid a necessitatibus vitae pariatur architecto, soluta modi explicabo cumque illo voluptatem at rem distinctio magnam reprehenderit, sed! Ipsum.',
+   				'image' => 'http://lorempixel.com/400/200'
+   			],
    		];
-   		return view('welcome');
+   		return view('welcome', compact('listPost'));
    	}
 
    	public function cate($cateName = null){
