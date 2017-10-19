@@ -22,7 +22,3 @@ Route::get('category/{cateName?}', 'Homecontroller@cate');
 
 
 
-
-
-
-
