@@ -14,7 +14,7 @@
 Route::get('/', 
 	'HomeController@index')->name('homepage');
 Route::get('category/{cateName?}', 'Homecontroller@cate');
-
+Route::view('massive-tpl/something', 'layout.massive');
 
 
 
