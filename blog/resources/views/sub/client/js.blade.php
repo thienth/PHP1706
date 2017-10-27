@@ -1,0 +1,29 @@
+<!-- inject:js -->
+<script src="{{asset('massive/vendor/modernizr/modernizr.js')}}"></script>
+<script src="{{asset('massive/vendor/jquery/jquery-1.10.2.min.js')}}"></script>
+<script src="{{asset('massive/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('massive/vendor/bootstrap-validator/validator.min.js')}}"></script>
+<script src="{{asset('massive/vendor/breakpoint/breakpoint.js')}}"></script>
+<script src="{{asset('massive/vendor/count-to/jquery.countTo.js')}}"></script>
+<script src="{{asset('massive/vendor/countdown/jquery.countdown.js')}}"></script>
+<script src="{{asset('massive/vendor/easing/jquery.easing.1.3.js')}}"></script>
+<script src="{{asset('massive/vendor/easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
+<script src="{{asset('massive/vendor/elasic-slider/jquery.eislideshow.js')}}"></script>
+<script src="{{asset('massive/vendor/flex-slider/jquery.flexslider-min.js')}}"></script>
+<script src="{{asset('massive/vendor/gmap/jquery.gmap.min.js')}}"></script>
+<script src="{{asset('massive/vendor/images-loaded/imagesloaded.js')}}"></script>
+<script src="{{asset('massive/vendor/isotope/jquery.isotope.js')}}"></script>
+<script src="{{asset('massive/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{asset('massive/vendor/mailchimp/jquery.ajaxchimp.min.js')}}"></script>
+<script src="{{asset('massive/vendor/menuzord/menuzord.js')}}"></script>
+<script src="{{asset('massive/vendor/nav/jquery.nav.js')}}"></script>
+<script src="{{asset('massive/vendor/owl-carousel/owl.carousel.min.js')}}"></script>
+<script src="{{asset('massive/vendor/parallax-js/parallax.min.js')}}"></script>
+<script src="{{asset('massive/vendor/smooth/smooth.js')}}"></script>
+<script src="{{asset('massive/vendor/sticky/jquery.sticky.min.js')}}"></script>
+<script src="{{asset('massive/vendor/touchspin/touchspin.js')}}"></script>
+<script src="{{asset('massive/vendor/typist/typist.js')}}"></script>
+<script src="{{asset('massive/vendor/visible/visible.js')}}"></script>
+<script src="{{asset('massive/vendor/wow/wow.min.js')}}"></script>
+<script src="{{asset('massive/js/scripts.js')}}"></script>
+<!-- endinject -->
