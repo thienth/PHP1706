@@ -16,6 +16,8 @@ Route::get('/',
 Route::get('category/{cateName?}', 'Homecontroller@cate');
 Route::view('massive-tpl/something', 'layout.massive');
 
+Route::get('/{slugUrl}', 'HomeController@detail')->name('post.detail');
+
 
 
 
