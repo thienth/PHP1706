@@ -48,18 +48,17 @@ class CustomRoute
 
 						// lay ngay thang nam cua 15 ngay sau
 						$date = date("Y-m-d");
-						$exiredDate = date("Y-m-d", 
+						$expiredDate = date("Y-m-d", 
 							strtotime(date("Y-m-d", strtotime($date)) . " +15 days"));
 
-						$rememberToken->user_id = $user_id;
+						$rememberToken->user_id = $user->id;
 						$rememberToken->token = $token;
-						$rememberToken->exired_date = $exiredDate;
+						$rememberToken->expired_date = $expiredDate;
 						$rememberToken->insert(); // them du lieu moi vao csdl
 
 						// tao cookie
+						setcookie("AUTH_TOKEN", $token, time()+(3600*24*15));
 					}
-
-
 
 					// var_dump($_SESSION['AUTH']);die;
 					header('location: index.php');
@@ -70,6 +69,25 @@ class CustomRoute
 				}
 				break;
 			case 'add-post':
+				$token = isset($_COOKIE['AUTH_TOKEN']) == true ? $_COOKIE['AUTH_TOKEN'] : null;
+				if($token != null){
+					$rm = RememberToken::where(['token', '=', $token])->first();
+					
+					$now = date_create(date('Y-m-d'));
+					$dbDate = date_create($rm->expired_date);
+					$dateDiff = date_diff($now, $dbDate);
+
+					if($dateDiff->days <= 15){
+						$user = User::find($rm->user_id);
+						$_SESSION['AUTH'] = [
+							'name' => $user->name,
+							'email' => $user->email,
+							'id' => $user->id
+						];
+					}
+				}
+
+
 				if(!isset($_SESSION['AUTH']) || $_SESSION['AUTH'] == null){
 					header('location: login');
 					die;
