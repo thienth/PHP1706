@@ -1,4 +1,3 @@
-header start-->
 <header class="l-header l-header_overlay">
 
     <div class="l-navbar l-navbar_expand l-navbar_t-light-trans js-navbar-sticky">
@@ -10,9 +9,6 @@ header start-->
                     <img class="retina" src="{{asset('massive/img/logo.png')}}" alt="Massive">
                 </a>
                 <!--logo end-->
-                @php
-                    $cateMenu = App\Category::where('is_menu', 1)->get();
-                @endphp
                 <!--mega menu start-->
                 <ul class="menuzord-menu menuzord-right c-nav_s-standard">
                     @foreach ($cateMenu as $cmn)
