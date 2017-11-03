@@ -12,16 +12,16 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
        	$cates = [
-       		['name' => 'Bóng đá'],
-       		['name' => 'Tin tức quốc tế'],
-       		['name' => 'Hi-tech'],
-       		['name' => 'Showbiz'],
-       		['name' => 'Sống trẻ'],
-       		['name' => 'Thể thao'],
-       		['name' => 'Sức khoẻ'],
-       		['name' => 'Video'],
-       		['name' => 'Phái đẹp'],
-       		['name' => 'Game']
+       		['name' => 'Bóng đá', 'slug' => 'bong-da'],
+       		['name' => 'Tin tức quốc tế', 'slug' => 'tin-tuc-quoc-te'],
+       		['name' => 'Hi-tech', 'slug' => 'hi-tech'],
+       		['name' => 'Showbiz', 'slug' => 'showbiz'],
+       		['name' => 'Sống trẻ', 'slug' => 'song-tre'],
+       		['name' => 'Thể thao', 'slug' => 'the-thao'],
+       		['name' => 'Sức khoẻ', 'slug' => 'suc-khoe'],
+       		['name' => 'Video', 'slug' => 'video'],
+       		['name' => 'Phái đẹp', 'slug' => 'phai-dep'],
+       		['name' => 'Game', 'slug' => 'game']
        	];
 
        	DB::table('categories')->insert($cates);
