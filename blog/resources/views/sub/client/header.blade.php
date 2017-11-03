@@ -1,4 +1,4 @@
-<!--header start-->
+header start-->
 <header class="l-header l-header_overlay">
 
     <div class="l-navbar l-navbar_expand l-navbar_t-light-trans js-navbar-sticky">
@@ -10,10 +10,18 @@
                     <img class="retina" src="{{asset('massive/img/logo.png')}}" alt="Massive">
                 </a>
                 <!--logo end-->
-
+                @php
+                    $cateMenu = App\Category::all();
+                @endphp
                 <!--mega menu start-->
                 <ul class="menuzord-menu menuzord-right c-nav_s-standard">
-                    <li class="active"><a href="#">Home</a>
+                    @foreach ($cateMenu as $cmn)
+                        <li class="">
+                            <a href="{{route('cate.detail', ['cateSlug' => $cmn->slug])}}">{{$cmn->name}}</a>
+                        </li>
+
+                    @endforeach
+                    {{-- <li class="active"><a href="#">Home</a>
                         <ul class="dropdown">
                             <li><a href="#">Home General</a>
                                 <ul class="dropdown">
@@ -247,7 +255,7 @@
 
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                     
                     <li>
                         <a href="javascript:void(0)"><i class="fa fa-search"></i> Search</a>
@@ -264,4 +272,4 @@
         </div>
     </div>
 </header>
-<!--header end-->
+<!--header end
