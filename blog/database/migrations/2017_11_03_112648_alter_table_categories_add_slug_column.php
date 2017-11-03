@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterTableUsersChangeColumnAvatarName extends Migration
+class AlterTableCategoriesAddSlugColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AlterTableUsersChangeColumnAvatarName extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('avatar_url', 'avatar');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->string('slug')->unique();
         });
     }
 
@@ -25,7 +25,7 @@ class AlterTableUsersChangeColumnAvatarName extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('categories', function (Blueprint $table) {
             //
         });
     }
