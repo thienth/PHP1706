@@ -14,6 +14,7 @@
 Route::get('/', 
 	'HomeController@index')->name('homepage');
 Route::get('category/{cateName?}', 'Homecontroller@cate');
+Route::get('tim-kiem', 'HomeController@search')->name('client.search');
 Route::view('massive-tpl/something', 'layout.massive');
 
 Route::get(App\Category::CATE_URL.'{cateSlug}', 'HomeController@cate')->name('cate.detail');

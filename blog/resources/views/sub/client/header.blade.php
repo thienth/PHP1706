@@ -20,8 +20,8 @@
                     <li>
                         <a href="javascript:void(0)"><i class="fa fa-search"></i> Search</a>
                         <div class="megamenu megamenu-quarter-width navbar-search">
-                            <form role="searchform">
-                                <input type="text" class="form-control" placeholder="Search Here">
+                            <form role="searchform" action="{{ route('client.search') }}">
+                                <input type="text" name="keyword" class="form-control" placeholder="Search Here">
                             </form>
                         </div>
                     </li>

@@ -31,4 +31,16 @@ class HomeController extends Controller
          }
          return view('home.detail', compact('post'));
       }
+
+      public function search(Request $request){
+         if(!$request->keyword){
+            return redirect(route('homepage'));
+         }
+
+         $keyword = $request->keyword;
+
+         $posts = Post::where('title', 'like', "%$keyword%")->paginate(24);
+         $posts->withPath("?keyword=$keyword");
+         return view('home.search-result', compact('keyword', 'posts'));
+      }
 }
