@@ -7,14 +7,9 @@ class HomeController extends Controller
 {
       public function index(){
          $posts = Post::paginate(24);
-<<<<<<< Updated upstream
-   		return view('home.index', compact('posts'));
-   	}
 
-=======
          return view('home.index', compact('posts'));
       }
->>>>>>> Stashed changes
       public function cate($cateSlug){
          $cate = Category::where('slug', $cateSlug)->first();
          if(!$cate){
@@ -23,13 +18,9 @@ class HomeController extends Controller
          }
          $posts = Post::where('cate_id', $cate->id)->paginate(24);
          return view('home.cate-detail', compact('posts', 'cate'));
-<<<<<<< Updated upstream
 
       }
 
-=======
-      }
->>>>>>> Stashed changes
       public function detail($slugUrl){
          $post = Post::where('slug', $slugUrl)->first();
          if(!$post){

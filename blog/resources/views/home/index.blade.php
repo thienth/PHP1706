@@ -9,11 +9,8 @@
                 <div class="post-single">
                     <ul class="post-cat">
                         @php
-<<<<<<< Updated upstream
-                            $cate = $p->getCate();    
-=======
+
                             $cate = $p->getCate();
->>>>>>> Stashed changes
                         @endphp
                     	@if($cate != null)
                         <li><a href="{{url(App\Category::CATE_URL.$cate->slug)}}">{{$cate->name}}</a>
