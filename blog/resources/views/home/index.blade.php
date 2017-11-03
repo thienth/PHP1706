@@ -1,14 +1,22 @@
 @extends('layout.massive')
 @section('content')
 <div class="container">
+    <h1>{{$cate->name}}</h1>
     <div class="row">
         <div class="post-list">
         	@foreach ($posts as $p)
             <div class="col-md-4">
                 <div class="post-single">
                     <ul class="post-cat">
-                    	@if($p->getCate() != null)
-                        <li><a href="#">{{$p->getCate()->name}}</a>
+                        @php
+<<<<<<< Updated upstream
+                            $cate = $p->getCate();    
+=======
+                            $cate = $p->getCate();
+>>>>>>> Stashed changes
+                        @endphp
+                    	@if($cate != null)
+                        <li><a href="{{url(App\Category::CATE_URL.$cate->slug)}}">{{$cate->name}}</a>
                         </li>
                         @endif
                     </ul>
@@ -27,7 +35,7 @@
                             <a href="#" class="author">{{$p->author}}</a> july 29, 2015
                         </div>
                         <p>
-                        	{!! 
+                        	{!!
                         		str_limit($p->short_desc, 110, ' ...')
                         	!!}
                         </p>
