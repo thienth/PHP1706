@@ -7,8 +7,11 @@
             <div class="col-md-4">
                 <div class="post-single">
                     <ul class="post-cat">
-                    	@if($p->getCate() != null)
-                        <li><a href="#">{{$p->getCate()->name}}</a>
+                        @php
+                            $cate = $p->getCate();    
+                        @endphp
+                    	@if($cate != null)
+                        <li><a href="{{url(App\Category::CATE_URL.$cate->slug)}}">{{$cate->name}}</a>
                         </li>
                         @endif
                     </ul>
