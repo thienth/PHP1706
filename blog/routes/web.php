@@ -13,6 +13,16 @@
 
 Route::get('/', 
 	'HomeController@index')->name('homepage');
+
+
+// Auth route
+Route::get('cp-login', 'Auth\LoginController@login')->name('login');
+Route::post('cp-login', 'Auth\LoginController@postLogin');
+Route::any('logout', function(){
+	Auth::logout();
+	return redirect(route('login'));
+})->name('logout');
+
 Route::get('category/{cateName?}', 'Homecontroller@cate');
 Route::get('tim-kiem', 'HomeController@search')->name('client.search');
 Route::view('massive-tpl/something', 'layout.massive');

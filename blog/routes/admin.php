@@ -1,7 +1,7 @@
 <?php 
 Route::get('/', function(){
-	return "trang dashboard";
-});
+	return Auth::user()->name;
+})->name('dashboard');
 
 Route::get('category', function(){
 	return "admin/category => quan tri danh muc bai viet";
