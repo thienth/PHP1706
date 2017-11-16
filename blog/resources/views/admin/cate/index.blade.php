@@ -27,7 +27,7 @@
 	@foreach ($cates as $element)
 		<tr>
 			<td>
-				 {{$loop->index+1}}
+				 {{$loop->iteration}}
 			</td>
 			<td>
 				 {{$element->name}}
