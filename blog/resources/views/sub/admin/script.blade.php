@@ -1,4 +1,4 @@
-<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
 <script src="{{asset('assets/global/plugins/respond.min.js')}}"></script>
@@ -43,6 +43,11 @@
 <script src="{{asset('assets/admin/pages/scripts/index.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/admin/pages/scripts/tasks.js')}}" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
+{{-- Tiny MCE --}}
+<script type="text/javascript" src="{{ asset('tinymce/tinymce.min.js') }}"></script>
+<script type="text/javascript">
+   tinymce.init({ selector:'textarea#editor' });
+</script>
 <script>
 jQuery(document).ready(function() {    
    Metronic.init(); // init metronic core componets
@@ -59,4 +64,4 @@ Demo.init(); // init demo features
    Tasks.initDashboardWidget();
 });
 </script>
-<!-- END JAVASCRIPTS -->
+<!-- END JAVASCRIPTS
