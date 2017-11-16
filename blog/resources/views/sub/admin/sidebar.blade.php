@@ -43,55 +43,23 @@
 				<span class="selected"></span>
 				<span class="arrow open"></span>
 				</a>
-				<ul class="sub-menu">
-					<li class="active">
-						<a href="index.html">
-						<i class="icon-bar-chart"></i>
-						Default Dashboard</a>
-					</li>
-					<li>
-						<a href="index_2.html">
-						<i class="icon-bulb"></i>
-						New Dashboard #1</a>
-					</li>
-					<li>
-						<a href="index_3.html">
-						<i class="icon-graph"></i>
-						New Dashboard #2</a>
-					</li>
-				</ul>
 			</li>
 			<li>
 				<a href="javascript:;">
 				<i class="icon-basket"></i>
-				<span class="title">eCommerce</span>
+				<span class="title">Danh mục</span>
 				<span class="arrow "></span>
 				</a>
 				<ul class="sub-menu">
 					<li>
-						<a href="ecommerce_index.html">
-						<i class="icon-home"></i>
-						Dashboard</a>
+						<a href="{{ route('cate.index') }}">
+						<i class="icon-list"></i>
+						Danh sách danh mục</a>
 					</li>
 					<li>
-						<a href="ecommerce_orders.html">
-						<i class="icon-basket"></i>
-						Orders</a>
-					</li>
-					<li>
-						<a href="ecommerce_orders_view.html">
-						<i class="icon-tag"></i>
-						Order View</a>
-					</li>
-					<li>
-						<a href="ecommerce_products.html">
-						<i class="icon-handbag"></i>
-						Products</a>
-					</li>
-					<li>
-						<a href="ecommerce_products_edit.html">
-						<i class="icon-pencil"></i>
-						Product Edit</a>
+						<a href="{{ route('cate.add') }}">
+						<i class="icon-plus"></i>
+						Thêm danh mục</a>
 					</li>
 				</ul>
 			</li>
