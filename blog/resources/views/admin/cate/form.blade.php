@@ -3,7 +3,7 @@
 	<div>
 		<h3>Thêm danh mục</h3>
 	</div>
-	<form action="{{ route('cate.add') }}" method="post" enctype="multipart/form-data" novalidate>
+	<form action="{{ route('cate.save') }}" method="post" enctype="multipart/form-data" novalidate>
 		{{csrf_field()}}
 		<input type="hidden" name="id" value="{{$model->id}}">
 		<div class="col-md-6">
@@ -41,7 +41,6 @@
 					<label for="isMenu">Hiển thị trang chủ</label>
 				</div>
 			</div>
-			
 		</div>
 		<div class="col-md-6">
 			<div class="form-group row">

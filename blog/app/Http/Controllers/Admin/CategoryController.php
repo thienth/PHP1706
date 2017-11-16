@@ -27,6 +27,19 @@ class CategoryController extends Controller
     	return view('admin.cate.form', compact('model', 'cates'));
     }
 
+    public function save(Request $request){
+    	if($request->id){
+    		$model = Category::find($request->id);
+    		if(!$model) return view('admin.404');
+    	}else{
+    		$model = new Category();
+    	}
+    	$model->fill($request->all());
+    	
+    	$model->save();
+    	return redirect(route('cate.index'));
+    }
+
     public function remove($id){
     	$cate = Category::find($id);
     	if(!$cate) return view('admin.404');
