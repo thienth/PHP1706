@@ -20,6 +20,13 @@ class CategoryController extends Controller
     	return view('admin.cate.form', compact('model', 'cates'));
     }
 
+    public function edit($id){
+    	$model = Category::find($id);
+    	if(!$model) return view('admin.404');
+    	$cates = Category::all();
+    	return view('admin.cate.form', compact('model', 'cates'));
+    }
+
     public function remove($id){
     	$cate = Category::find($id);
     	if(!$cate) return view('admin.404');
