@@ -1,7 +1,5 @@
 <?php 
-Route::get('/', function(){
-	return Auth::user()->name;
-})->name('dashboard');
+Route::get('/', 'Admin\DashboardController@index')->name('dashboard');
 
 Route::get('category', function(){
 	return "admin/category => quan tri danh muc bai viet";
