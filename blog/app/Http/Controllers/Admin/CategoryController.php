@@ -13,4 +13,13 @@ class CategoryController extends Controller
 
     	return view('admin.cate.index', compact('cates'));
     }
+
+    public function remove($id){
+    	$cate = Category::find($id);
+    	if(!$cate) return view('admin.404');
+
+    	$cate->delete();
+
+    	return redirect(route('cate.index'));
+    }
 }
