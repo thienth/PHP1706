@@ -14,6 +14,12 @@ class CategoryController extends Controller
     	return view('admin.cate.index', compact('cates'));
     }
 
+    public function add(){
+    	$model = new Category();
+    	$cates = Category::all();
+    	return view('admin.cate.form', compact('model', 'cates'));
+    }
+
     public function remove($id){
     	$cate = Category::find($id);
     	if(!$cate) return view('admin.404');
