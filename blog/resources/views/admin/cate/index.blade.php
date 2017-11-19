@@ -75,12 +75,19 @@
 	</tr>
 	</tbody>
 	</table>
+
 @endsection
 @section('js')
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#pageSize').on('change', function(){
-			console.log($(this).val());
+			// Xử lý url mỗi khi select pagesize đc thay đổi giá trị
+			// redirect trang sang url theo giá trị đc thay đổi
+			var fullUrl = '{{$fullUrl}}';
+			var pageSize = $(this).val();
+			fullUrl += fullUrl.indexOf("?") != -1 ? "&" : "?";
+			fullUrl+=`pagesize=${pageSize}`;
+			console.log(fullUrl);
 		});
 	});
 </script>

@@ -8,6 +8,8 @@ use App\Category;
 class CategoryController extends Controller
 {
     public function index(Request $request){
+
+        $fullUrl = $request->fullUrl();
         $keyword = $request->keyword;
         if(!$keyword){
     	   $cates = Category::paginate(10);
@@ -15,7 +17,8 @@ class CategoryController extends Controller
             $cates = Category::where('name', 'like', "%$keyword%")->paginate(10);
             $cates->withPath("?keyword=$keyword");
         }
-    	return view('admin.cate.index', compact('cates', 'keyword'));
+    	return view('admin.cate.index', 
+                        compact('cates', 'keyword', 'fullUrl'));
     }
 
     public function add(){
