@@ -21,3 +21,4 @@
 <link href="{{asset('assets/admin/layout/css/themes/darkblue.css')}}" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="{{asset('assets/admin/layout/css/custom.css')}}" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
+<link href="{{asset('css/main.css')}}" rel="stylesheet" type="text/css"/>

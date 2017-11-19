@@ -6,14 +6,14 @@
 		<form action="" method="get" id="filterForm">
 			<div class="page-size form-group col-xs-1">
 				<select id="pageSize" name="pagesize" class="form-control">
-					<option value="2">2</option>
-					<option value="5">5</option>
-					<option value="10">10</option>
+					@forelse (getPageSizeList() as $ps)
+						<option @if($pageSize == $ps) selected @endif value="{{$ps}}">{{$ps}}</option>
+					@endforeach
 				</select>
 			</div>
-			<div class="form-group col-sm-3">
+			<div class="form-group col-sm-3 div-cate-relative">
 				<input class="form-control" type="text" name="keyword" value="{{$keyword}}" placeholder="Tìm kiếm...">
-				<button class="btn btn-success btn-sm" type="submit">
+				<button class="btn btn-success btn-sm btn-asl-form" type="submit">
 					<i class="fa fa-search"></i>
 				</button>
 			</div>
