@@ -1089,6 +1089,7 @@ License: You must have a valid license purchased only from themeforest(the above
 </div>
 <!-- END FOOTER -->
 @include('sub.admin.script')
+@yield('js');
 </body>
 <!-- END BODY -->
 </html>

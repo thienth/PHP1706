@@ -76,7 +76,7 @@
 	</tbody>
 	</table>
 @endsection
-
+@section('js')
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#pageSize').on('change', function(){
@@ -84,3 +84,4 @@
 		});
 	});
 </script>
+@endsection
