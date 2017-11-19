@@ -7,11 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Category;
 class CategoryController extends Controller
 {
-    public function index(){
-
-    	$cates = Category::paginate(20);
-
-    	return view('admin.cate.index', compact('cates'));
+    public function index(Request $request){
+        $keyword = $request->keyword;
+        if(!$keyword){
+    	   $cates = Category::paginate(10);
+        }else{
+            $cates = Category::where('name', 'like', "%$keyword%")->paginate(10);
+            $cates->withPath("?keyword=$keyword");
+        }
+    	return view('admin.cate.index', compact('cates', 'keyword'));
     }
 
     public function add(){

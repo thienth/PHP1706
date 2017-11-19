@@ -10,4 +10,12 @@ class Category extends Model
    	protected $table = 'categories';
 
    	public $fillable = ['name', 'desc', 'is_menu', 'parent_id', 'slug'];
+
+   	public function getParentName(){
+   		$parent = self::find($this->parent_id);
+   		if(!$parent){
+   			return null;
+   		}
+   		return $parent->name;
+   	}
 }

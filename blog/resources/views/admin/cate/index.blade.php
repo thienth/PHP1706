@@ -1,5 +1,24 @@
 @extends('layout.metronic')
 @section('content')
+	<div class="page-size form-group col-xs-1">
+		<select id="pageSize" class="form-control">
+			<option value="2">2</option>
+			<option value="5">5</option>
+			<option value="10">10</option>
+		</select>
+	</div>
+	<div class="search-form">
+		<form action="" method="get" >
+			<div class="form-group col-sm-3">
+				<input class="form-control" type="text" name="keyword" value="{{$keyword}}" placeholder="Tìm kiếm...">
+				<button class="btn btn-success btn-sm" type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+			</div>
+			
+		</form>
+	</div>
+
 	<table class="table table-hover">
 	<thead>
 	<tr>
@@ -33,7 +52,7 @@
 				 {{$element->name}}
 			</td>
 			<td>
-				 {{$element->parent_id}}
+				 {{$element->getParentName()}}
 			</td>
 			<td class="hidden-480">
 				 
@@ -47,8 +66,21 @@
 				</a>
 			</td>
 		</tr>
+		
 	@endforeach
-	
+	<tr>
+		<td colspan="5" class="text-center">
+			{{$cates->links()}}
+		</td>
+	</tr>
 	</tbody>
 	</table>
 @endsection
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#pageSize').on('change', function(){
+			console.log($(this).val());
+		});
+	});
+</script>
