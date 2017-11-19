@@ -8,17 +8,21 @@ use App\Category;
 class CategoryController extends Controller
 {
     public function index(Request $request){
-
+        $pageSize = $request->pagesize == null ? 10 : $request->pagesize;
         $fullUrl = $request->fullUrl();
         $keyword = $request->keyword;
+        $addPath = "";
         if(!$keyword){
-    	   $cates = Category::paginate(10);
+    	   $cates = Category::paginate($pageSize);
+           $addPath .= "?pagesize=$pageSize";
         }else{
-            $cates = Category::where('name', 'like', "%$keyword%")->paginate(10);
-            $cates->withPath("?keyword=$keyword");
+            $cates = Category::where('name', 'like', "%$keyword%")->paginate($pageSize);
+            $addPath .= "?keyword=$keyword&pagesize=$pageSize";
+            
         }
+        $cates->withPath($addPath);
     	return view('admin.cate.index', 
-                        compact('cates', 'keyword', 'fullUrl'));
+                        compact('cates', 'keyword', 'fullUrl', 'pageSize'));
     }
 
     public function add(){

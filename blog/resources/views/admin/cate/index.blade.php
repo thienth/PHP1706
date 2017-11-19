@@ -1,14 +1,16 @@
 @extends('layout.metronic')
 @section('content')
-	<div class="page-size form-group col-xs-1">
-		<select id="pageSize" class="form-control">
-			<option value="2">2</option>
-			<option value="5">5</option>
-			<option value="10">10</option>
-		</select>
-	</div>
+	
 	<div class="search-form">
-		<form action="" method="get" >
+
+		<form action="" method="get" id="filterForm">
+			<div class="page-size form-group col-xs-1">
+				<select id="pageSize" name="pagesize" class="form-control">
+					<option value="2">2</option>
+					<option value="5">5</option>
+					<option value="10">10</option>
+				</select>
+			</div>
 			<div class="form-group col-sm-3">
 				<input class="form-control" type="text" name="keyword" value="{{$keyword}}" placeholder="Tìm kiếm...">
 				<button class="btn btn-success btn-sm" type="submit">
@@ -83,11 +85,7 @@
 		$('#pageSize').on('change', function(){
 			// Xử lý url mỗi khi select pagesize đc thay đổi giá trị
 			// redirect trang sang url theo giá trị đc thay đổi
-			var fullUrl = '{{$fullUrl}}';
-			var pageSize = $(this).val();
-			fullUrl += fullUrl.indexOf("?") != -1 ? "&" : "?";
-			fullUrl+=`pagesize=${pageSize}`;
-			console.log(fullUrl);
+			$('#filterForm').submit();
 		});
 	});
 </script>
