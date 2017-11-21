@@ -1,4 +1,4 @@
-BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
 <script src="{{asset('assets/global/plugins/respond.min.js')}}"></script>
@@ -6,6 +6,11 @@ BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -
 <![endif]-->
 <script src="{{asset('assets/global/plugins/jquery.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/global/plugins/jquery-migrate.min.js')}}" type="text/javascript"></script>
+{{-- Jquery validate --}}
+<script src="{{asset('assets/global/plugins/jquery-validation/js/jquery.validate.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/global/plugins/jquery-validation/js/additional-methods.min.js')}}" type="text/javascript"></script>
+
+
 <!-- IMPORTANT! Load jquery-ui.min.js')}} before bootstrap.min.js')}} to fix bootstrap tooltip conflict with jquery ui tooltip -->
 <script src="{{asset('assets/global/plugins/jquery-ui/jquery-ui.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/global/plugins/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -48,6 +53,8 @@ BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -
 <!-- END PAGE LEVEL SCRIPTS -->
 {{-- Tiny MCE --}}
 <script type="text/javascript" src="{{ asset('tinymce/tinymce.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/custom-validate-method.js') }}"></script>
+
 <script type="text/javascript">
    tinymce.init({ selector:'textarea#editor' });
 </script>
@@ -56,15 +63,5 @@ jQuery(document).ready(function() {
    Metronic.init(); // init metronic core componets
    Layout.init(); // init layout
    QuickSidebar.init(); // init quick sidebar
-Demo.init(); // init demo features
-   Index.init();   
-   Index.initDashboardDaterange();
-   Index.initJQVMAP(); // init index page's custom scripts
-   Index.initCalendar(); // init index page's custom scripts
-   Index.initCharts(); // init index page's custom scripts
-   Index.initChat();
-   Index.initMiniCharts();
-   Tasks.initDashboardWidget();
 });
 </script>
-<!-- END JAVASCRIPTS -->

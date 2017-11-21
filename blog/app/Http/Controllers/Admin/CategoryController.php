@@ -39,16 +39,18 @@ class CategoryController extends Controller
     }
 
     public function save(Request $request){
-    	if($request->id){
-    		$model = Category::find($request->id);
-    		if(!$model) return view('admin.404');
-    	}else{
-    		$model = new Category();
-    	}
-    	$model->fill($request->all());
+
+        dd($request->all());
+    	// if($request->id){
+    	// 	$model = Category::find($request->id);
+    	// 	if(!$model) return view('admin.404');
+    	// }else{
+    	// 	$model = new Category();
+    	// }
+    	// $model->fill($request->all());
     	
-    	$model->save();
-    	return redirect(route('cate.index'));
+    	// $model->save();
+    	// return redirect(route('cate.index'));
     }
 
     public function remove($id){

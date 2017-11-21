@@ -3,7 +3,7 @@
 	<div>
 		<h3>Thêm danh mục</h3>
 	</div>
-	<form action="{{ route('cate.save') }}" method="post" enctype="multipart/form-data" novalidate>
+	<form id="cate-form" action="{{ route('cate.save') }}" method="post" enctype="multipart/form-data" novalidate>
 		{{csrf_field()}}
 		<input type="hidden" name="id" value="{{$model->id}}">
 		<div class="col-md-6">
@@ -61,4 +61,36 @@
 			<button type="submit" class="btn btn-success">Lưu</button>
 		</div>
 	</form>
+	<input type="hidden" id="ajaxToken" value="{{csrf_token()}}">
+@endsection
+
+@section('js')
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#cate-form').validate({
+				rules: {
+					name: {
+						required: true,
+						checkExisted: "{{route('cate.checkName')}}"
+					},
+					slug: 'required'
+				},
+				messages: {
+					name:{
+						required: 'Vui lòng nhập tên danh mục'
+					},
+					slug: {
+						required: 'Vui lòng nhập đường dẫn'
+					}
+				},
+				errorPlacement: function(error, element) {
+					$(error).addClass('text-danger');
+					error.insertAfter(element);
+				}
+
+			});
+		});
+	</script>
+
+
 @endsection
