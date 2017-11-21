@@ -60,10 +60,11 @@
 				 
 			</td>
 			<td>
-				<a href="{{ route('cate.edit', ['id' => $element->id]) }}" title="" class="btn btn-sm btn-primary">
+				<a href="{{ route('cate.edit', ['id' => $element->id]) }}"  class="btn btn-sm btn-primary">
 					<i class="fa fa-pencil"></i>
 				</a>
-				<a href="{{ route('cate.remove', ['id' => $element->id]) }}" title="" class="btn btn-sm btn-danger">
+				{{--  --}}
+				<a href="javascript:;" onclick="confirmRemove('{{ route('cate.remove', ['id' => $element->id]) }}')" class="btn btn-sm btn-danger">
 					<i class="fa fa-remove"></i>
 				</a>
 			</td>
@@ -81,6 +82,27 @@
 @endsection
 @section('js')
 <script type="text/javascript">
+	function confirmRemove(url){
+		bootbox.confirm({
+		    message: "Bạn có chắc chắn muốn xoá?",
+		    buttons: {
+		        confirm: {
+		            label: 'Có',
+		            className: 'btn-danger'
+		        },
+		        cancel: {
+		            label: 'Không',
+		            className: 'btn-primary'
+		        }
+		    },
+		    callback: function (result) {
+		        if(result){
+		        	window.location.href = url;
+		        }
+		    }
+		});
+	}
+
 	$(document).ready(function(){
 		$('#pageSize').on('change', function(){
 			// Xử lý url mỗi khi select pagesize đc thay đổi giá trị
