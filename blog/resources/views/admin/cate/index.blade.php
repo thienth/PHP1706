@@ -28,6 +28,9 @@
 			 #
 		</th>
 		<th>
+			 Ảnh
+		</th>
+		<th>
 			 Tên danh mục
 		</th>
 		<th>
@@ -49,6 +52,9 @@
 		<tr>
 			<td>
 				 {{$loop->iteration}}
+			</td>
+			<td>
+				 <img src="{{asset($element->image)}}" width="70">
 			</td>
 			<td>
 				 {{$element->name}}

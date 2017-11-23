@@ -10,13 +10,16 @@
 			<div class="form-group row">
 				<label class="col-md-3 control-label">Tên <span class="text-danger">*</span></label>
 				<div class="col-md-9">
-					<input type="text" class="form-control" placeholder="Tên danh mục" name="name" value="{{$model->name}}">
+					<input id="cateName" type="text" class="form-control" placeholder="Tên danh mục" name="name" value="{{$model->name}}">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-md-3 control-label">Đường dẫn<span class="text-danger">*</span></label>
-				<div class="col-md-9">
-					<input type="text" class="form-control" placeholder="Ví dụ: the-thao" name="slug" value="{{$model->slug}}">
+				<div class="col-md-9 div-cate-relative">
+					<input id="slug" type="text" class="form-control" placeholder="Ví dụ: the-thao" name="slug" value="{{$model->slug}}">
+					<button type="button" class="btn btn-sm btn-success btn-asl-form">
+						<i class="fa fa-bolt"></i>
+					</button>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -67,6 +70,29 @@
 @section('js')
 	<script type="text/javascript">
 		$(document).ready(function(){
+			$('.btn-asl-form').on('click', function(){
+				var cateName = $('#cateName').val();
+				cateName = cateName.trim();
+				if(cateName == "" || cateName == null){
+					return false;
+				}
+
+				// gửi request để lấy ra url mới
+				$.ajax({
+					url: "{{route('getSlug')}}",
+					method: 'post',
+					data: {
+						value : cateName,
+						_token: $('#ajaxToken').val()
+					},
+					dataType: "JSON",
+					success: function (rs){
+						$('#slug').val(rs.data);
+					}
+				}); 
+			
+			});
+
 			$('#cate-form').validate({
 				rules: {
 					name: {

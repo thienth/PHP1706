@@ -17,4 +17,11 @@ Route::post('cate/save',
 Route::get('post', function(){
 	return "admin/post => quan tri bai viet trong he thong";
 });
+
+Route::post('getSlug', function(Request $request){
+	$date = date('YmdHisB');
+	$result = str_slug($request->value)."-" . $date;
+
+	return response()->json(['data' => $result]);
+})->name('getSlug');
  ?>

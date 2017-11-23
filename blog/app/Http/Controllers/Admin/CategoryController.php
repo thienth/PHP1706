@@ -40,17 +40,24 @@ class CategoryController extends Controller
 
     public function save(Request $request){
 
-        dd($request->all());
-    	// if($request->id){
-    	// 	$model = Category::find($request->id);
-    	// 	if(!$model) return view('admin.404');
-    	// }else{
-    	// 	$model = new Category();
-    	// }
-    	// $model->fill($request->all());
+    	if($request->id){
+    		$model = Category::find($request->id);
+    		if(!$model) return view('admin.404');
+    	}else{
+    		$model = new Category();
+    	}
+    	$model->fill($request->all());
     	
-    	// $model->save();
-    	// return redirect(route('cate.index'));
+        // upload image
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $fileName = uniqid()."-".$file->getClientOriginalName();
+            $file->storeAs('uploads', $fileName);
+            $model->image = 'uploads/'.$fileName;
+        }
+
+    	$model->save();
+    	return redirect(route('cate.index'));
     }
 
     public function remove($id){
