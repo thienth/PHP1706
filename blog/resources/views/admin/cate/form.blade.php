@@ -73,14 +73,18 @@
 						required: true,
 						checkExisted: "{{route('cate.checkName')}}"
 					},
-					slug: 'required'
+					slug: {
+						required: true,
+						checkExisted: "{{route('cate.checkSlug')}}"
+					}
 				},
 				messages: {
 					name:{
 						required: 'Vui lòng nhập tên danh mục'
 					},
 					slug: {
-						required: 'Vui lòng nhập đường dẫn'
+						required: 'Vui lòng nhập đường dẫn',
+						checkExisted: 'Đường dẫn đã tồn tại'
 					}
 				},
 				errorPlacement: function(error, element) {

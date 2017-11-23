@@ -61,4 +61,20 @@ class CategoryController extends Controller
 
     	return redirect(route('cate.index'));
     }
+    
+    public function checkName(Request $request){
+        $cate = Category::where('name', $request->name)->first();
+
+        $result = $cate == false ? true : false;
+
+        return response()->json($result);
+    }
+
+    public function checkSlug(Request $request){
+        $cate = Category::where('slug', $request->name)->first();
+
+        $result = $cate == false ? true : false;
+
+        return response()->json($result);
+    }
 }
