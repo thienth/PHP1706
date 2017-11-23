@@ -71,7 +71,9 @@ class CategoryController extends Controller
     
     public function checkName(Request $request){
         $cate = Category::where('name', $request->name)->first();
-
+        if($cate && $cate->id == $request->id){
+            return response()->json(true);
+        }
         $result = $cate == false ? true : false;
 
         return response()->json($result);
@@ -79,7 +81,9 @@ class CategoryController extends Controller
 
     public function checkSlug(Request $request){
         $cate = Category::where('slug', $request->name)->first();
-
+        if($cate && $cate->id == $request->id){
+            return response()->json(true);
+        }
         $result = $cate == false ? true : false;
 
         return response()->json($result);

@@ -2,9 +2,10 @@ var checkExistedResult = false;
 jQuery.validator.addMethod("checkExisted", 
 	function(value, element, attr){
     $.ajax({
-    	url: attr,
+    	url: attr.requestUrl,
     	method: 'post',
     	data: {
+            id: attr.modelId,
     		name: value,
     		_token: $('#ajaxToken').val()
     	},

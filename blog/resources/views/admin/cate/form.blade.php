@@ -97,11 +97,17 @@
 				rules: {
 					name: {
 						required: true,
-						checkExisted: "{{route('cate.checkName')}}"
+						checkExisted: {
+							requestUrl : "{{route('cate.checkName')}}", 
+							modelId: {{$model->id}}
+						}
 					},
 					slug: {
 						required: true,
-						checkExisted: "{{route('cate.checkSlug')}}"
+						checkExisted: {
+							requestUrl: "{{route('cate.checkSlug')}}", 
+							modelId: {{$model->id}}
+						}
 					}
 				},
 				messages: {
