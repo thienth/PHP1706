@@ -47,6 +47,17 @@
 		</div>
 		<div class="col-md-6">
 			<div class="form-group row">
+				<div class="col-md-offset-3">
+					
+					<img src="@if($model->image == "") 
+							{{asset('uploads/default-img.jpg')}} 
+						@else 
+							{{asset($model->image)}} 
+						@endif" id="exampleImage" width="200">
+				</div>
+			</div>
+			<div class="form-group row">
+				
 				<label for="image" class="col-md-3 control-label">Ảnh </label>
 				<div class="col-md-9">
 					<input type="file" id="image" name="image" accept="image/*">
@@ -70,6 +81,11 @@
 @section('js')
 	<script type="text/javascript">
 		$(document).ready(function(){
+			$('#image').change(function(event){
+				var tmppath = URL.createObjectURL(event.target.files[0]);
+				$('#exampleImage').attr('src',tmppath);
+			});
+
 			$('.btn-asl-form').on('click', function(){
 				var cateName = $('#cateName').val();
 				cateName = cateName.trim();
@@ -99,14 +115,14 @@
 						required: true,
 						checkExisted: {
 							requestUrl : "{{route('cate.checkName')}}", 
-							modelId: {{$model->id}}
+							modelId: '{{$model->id}}'
 						}
 					},
 					slug: {
 						required: true,
 						checkExisted: {
 							requestUrl: "{{route('cate.checkSlug')}}", 
-							modelId: {{$model->id}}
+							modelId: '{{$model->id}}'
 						}
 					}
 				},

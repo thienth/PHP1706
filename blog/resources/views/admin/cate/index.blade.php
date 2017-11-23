@@ -78,7 +78,7 @@
 		
 	@endforeach
 	<tr>
-		<td colspan="5" class="text-center">
+		<td colspan="6" class="text-center">
 			{{$cates->links()}}
 		</td>
 	</tr>
