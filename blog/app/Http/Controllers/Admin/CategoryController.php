@@ -9,6 +9,7 @@ use App\Http\Requests\SaveCategoryRequest;
 class CategoryController extends Controller
 {
     public function index(Request $request){
+
         $pageSize = $request->pagesize == null ? 10 : $request->pagesize;
         $fullUrl = $request->fullUrl();
         $keyword = $request->keyword;
@@ -47,8 +48,9 @@ class CategoryController extends Controller
     	}else{
     		$model = new Category();
     	}
+
     	$model->fill($request->all());
-    	
+    	$model->is_menu = $request->is_menu == 1 ? 1 : 0;
         // upload image
         if($request->hasFile('image')){
             $file = $request->file('image');

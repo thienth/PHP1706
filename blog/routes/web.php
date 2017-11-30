@@ -27,12 +27,57 @@ Route::get('category/{cateName?}', 'Homecontroller@cate');
 Route::get('tim-kiem', 'HomeController@search')->name('client.search');
 Route::view('massive-tpl/something', 'layout.massive');
 
+use Illuminate\Support\Facades\Mail;
+Route::get('send-mail', function() {
+    $username = 'thienth';
+	Mail::send('mail_template.test-send-mail', compact('username'), function ($message) {
+	    $message->to('thienth32@gmail.com', 'Thien tran');
+	    $message->cc('kenjav96@gmail.com', 'Dũng thần dâm');
+	    $message->replyTo('thienth@fpt.edu.vn', 'Mr.Thien');
+	    $message->subject('test email');
+	});
+	return 'done!';
+});
+
+use Illuminate\Http\Request;
+use App\PasswordReset;
+use Carbon\Carbon;
+Route::post('forget-pwd-email', function(Request $request) {
+	$email = $request->email;
+    $user = App\User::where('email', $email)->first();
+    if(!$user) {
+    	return 'done!';
+    }
+
+    $pwdReset = PasswordReset::where('email', $request->email)->delete();
+    $token = str_random(20);
+    $now = Carbon::now();
+    $pwdReset = new PasswordReset();
+    $pwdReset->email = $request->email;
+    $pwdReset->token = $token;
+    $pwdReset->created_at = $now;
+    $pwdReset->save();
+    
+    $url = url('/reset-pwd/'.$token);
+    // send email
+    Mail::send('mail_template.reset-password-mail', compact('url', 'user'), function ($message) use ($user) {
+	    $message->to($user->email, $user->name);
+	    // $message->cc('kenjav96@gmail.com', 'Dũng thần dâm');
+	    // $message->replyTo('thienth@fpt.edu.vn', 'Mr.Thien');
+	    $message->subject('Yêu cầu cấp lại mật khẩu');
+	});
+
+	return 'done!';
+
+})->name('forget-pwd.email');
+
+Route::get('reset-pwd/{token}', function($token){
+
+});
+
 Route::get(App\Category::CATE_URL.'{cateSlug}', 'HomeController@cate')->name('cate.detail');
+
 Route::get('/{slugUrl}', 'HomeController@detail')->name('post.detail');
-
-
-
-
 
 
 

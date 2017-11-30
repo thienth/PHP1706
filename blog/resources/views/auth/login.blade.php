@@ -140,8 +140,8 @@ License: You must have a valid license purchased only from themeforest(the above
 	</form>
 	<!-- END LOGIN FORM -->
 	<!-- BEGIN FORGOT PASSWORD FORM -->
-	<form class="forget-form"  method="post">
-		
+	<form class="forget-form"  method="post" action="{{route('forget-pwd.email')}}">
+		{{csrf_field()}}
 		<h3>Forget Password ?</h3>
 		<p>
 			 Enter your e-mail address below to reset your password.
