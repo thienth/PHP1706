@@ -36,7 +36,7 @@
 		<th>
 			 Danh mục cha
 		</th>
-		<th class="hidden-480">
+		<th>
 			 Hiển thị menu
 		</th>
 		<th>
@@ -62,8 +62,12 @@
 			<td>
 				 {{$element->getParentName()}}
 			</td>
-			<td class="hidden-480">
-				 
+			<td class="text-center">
+				@if($element->is_menu == 1)
+					<i class="fa fa-check fa-2x text-success"></i>
+				@else
+					<i class="fa fa-ban fa-2x text-danger"></i>
+				@endif
 			</td>
 			<td>
 				<a href="{{ route('cate.edit', ['id' => $element->id]) }}"  class="btn btn-sm btn-primary">
