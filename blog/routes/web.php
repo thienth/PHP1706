@@ -72,7 +72,19 @@ Route::post('forget-pwd-email', function(Request $request) {
 })->name('forget-pwd.email');
 
 Route::get('reset-pwd/{token}', function($token){
-
+	// check token co hop le hay khong
+	$pwdReset = PasswordReset::where('token', $token)->first();
+	if(!$pwdReset){
+		return "error! invalid token";
+	}
+	$thatDay = Carbon::createFromFormat('Y-m-d H:i:s', $pwdReset->created_at);
+	$now = Carbon::now();
+	$dif = $now->diffInHours($thatDay);
+	if($dif > 24){
+		$pwdReset->delete();
+		return "error! invalid token";
+	}
+	return view('auth.reset-pwd', compact('token'));
 });
 
 Route::get(App\Category::CATE_URL.'{cateSlug}', 'HomeController@cate')->name('cate.detail');
