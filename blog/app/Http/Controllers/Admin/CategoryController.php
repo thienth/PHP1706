@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
+use App\Http\Requests\SaveCategoryRequest;
 class CategoryController extends Controller
 {
     public function index(Request $request){
@@ -38,7 +39,7 @@ class CategoryController extends Controller
     	return view('admin.cate.form', compact('model', 'cates'));
     }
 
-    public function save(Request $request){
+    public function save(SaveCategoryRequest $request){
 
     	if($request->id){
     		$model = Category::find($request->id);

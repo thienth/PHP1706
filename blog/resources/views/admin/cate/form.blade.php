@@ -10,7 +10,10 @@
 			<div class="form-group row">
 				<label class="col-md-3 control-label">Tên <span class="text-danger">*</span></label>
 				<div class="col-md-9">
-					<input id="cateName" type="text" class="form-control" placeholder="Tên danh mục" name="name" value="{{$model->name}}">
+					<input id="cateName" type="text" class="form-control" placeholder="Tên danh mục" name="name" value="{{old('name', $model->name)}}">
+					@if(count($errors) > 0)
+						<span class="text-danger">{{$errors->first('name')}}</span>
+					@endif
 				</div>
 			</div>
 			<div class="form-group row">
@@ -109,38 +112,38 @@
 			
 			});
 
-			$('#cate-form').validate({
-				rules: {
-					name: {
-						required: true,
-						checkExisted: {
-							requestUrl : "{{route('cate.checkName')}}", 
-							modelId: '{{$model->id}}'
-						}
-					},
-					slug: {
-						required: true,
-						checkExisted: {
-							requestUrl: "{{route('cate.checkSlug')}}", 
-							modelId: '{{$model->id}}'
-						}
-					}
-				},
-				messages: {
-					name:{
-						required: 'Vui lòng nhập tên danh mục'
-					},
-					slug: {
-						required: 'Vui lòng nhập đường dẫn',
-						checkExisted: 'Đường dẫn đã tồn tại'
-					}
-				},
-				errorPlacement: function(error, element) {
-					$(error).addClass('text-danger');
-					error.insertAfter(element);
-				}
+			// $('#cate-form').validate({
+			// 	rules: {
+			// 		name: {
+			// 			required: true,
+			// 			checkExisted: {
+			// 				requestUrl : "{{route('cate.checkName')}}", 
+			// 				modelId: '{{$model->id}}'
+			// 			}
+			// 		},
+			// 		slug: {
+			// 			required: true,
+			// 			checkExisted: {
+			// 				requestUrl: "{{route('cate.checkSlug')}}", 
+			// 				modelId: '{{$model->id}}'
+			// 			}
+			// 		}
+			// 	},
+			// 	messages: {
+			// 		name:{
+			// 			required: 'Vui lòng nhập tên danh mục'
+			// 		},
+			// 		slug: {
+			// 			required: 'Vui lòng nhập đường dẫn',
+			// 			checkExisted: 'Đường dẫn đã tồn tại'
+			// 		}
+			// 	},
+			// 	errorPlacement: function(error, element) {
+			// 		$(error).addClass('text-danger');
+			// 		error.insertAfter(element);
+			// 	}
 
-			});
+			// });
 		});
 	</script>
 

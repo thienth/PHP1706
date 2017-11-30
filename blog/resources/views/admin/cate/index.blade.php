@@ -62,7 +62,7 @@
 			<td>
 				 {{$element->getParentName()}}
 			</td>
-			<td class="text-center">
+			<td>
 				@if($element->is_menu == 1)
 					<i class="fa fa-check fa-2x text-success"></i>
 				@else
