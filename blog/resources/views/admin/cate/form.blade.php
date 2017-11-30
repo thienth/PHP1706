@@ -23,6 +23,9 @@
 					<button type="button" class="btn btn-sm btn-success btn-asl-form">
 						<i class="fa fa-bolt"></i>
 					</button>
+					@if(count($errors) > 0)
+						<span class="text-danger">{{$errors->first('slug')}}</span>
+					@endif
 				</div>
 			</div>
 			<div class="form-group row">
@@ -57,6 +60,8 @@
 						@else 
 							{{asset($model->image)}} 
 						@endif" id="exampleImage" width="200">
+
+					
 				</div>
 			</div>
 			<div class="form-group row">
@@ -64,6 +69,9 @@
 				<label for="image" class="col-md-3 control-label">Ảnh </label>
 				<div class="col-md-9">
 					<input type="file" id="image" name="image" accept="image/*">
+					@if(count($errors) > 0)
+						<span class="text-danger">{{$errors->first('image')}}</span>
+					@endif
 				</div>
 			</div>
 			<div class="form-group row">

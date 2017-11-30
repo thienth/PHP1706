@@ -27,7 +27,12 @@ class SaveCategoryRequest extends FormRequest
             'name' => [
                 'required',
                 Rule::unique('categories')->ignore($this->id)
-            ]
+            ], 
+            'slug' => [
+                'required',
+                Rule::unique('categories')->ignore($this->id)
+            ], 
+            'image' => 'image'   
         ];
     }
 
@@ -35,6 +40,9 @@ class SaveCategoryRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên',
             'name.unique' => 'Tên danh mục đã tồn tại',
+            'slug.required' => 'Vui lòng nhập đường dẫn',
+            'slug.unique' => 'Đường dẫn đã tồn tại',
+            'image.image' => 'Không đúng định dạng ảnh'
         ];
     }
 }
