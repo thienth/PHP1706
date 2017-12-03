@@ -42,6 +42,7 @@ Route::get('send-mail', function() {
 use Illuminate\Http\Request;
 use App\PasswordReset;
 use Carbon\Carbon;
+use App\User;
 Route::post('forget-pwd-email', function(Request $request) {
 	$email = $request->email;
     $user = App\User::where('email', $email)->first();
@@ -81,11 +82,30 @@ Route::get('reset-pwd/{token}', function($token){
 	$now = Carbon::now();
 	$dif = $now->diffInHours($thatDay);
 	if($dif > 24){
-		$pwdReset->delete();
+		DB::table('password_resets')->where('token', $token)->delete();
 		return "error! invalid token";
 	}
 	return view('auth.reset-pwd', compact('token'));
 });
+
+Route::post('auth-reset-password', function(Request $request) {
+    $pwdReset = PasswordReset::where('token', $request->token)->first();
+	if(!$pwdReset){
+		return "error! invalid token";
+	}
+	$thatDay = Carbon::createFromFormat('Y-m-d H:i:s', $pwdReset->created_at);
+	$now = Carbon::now();
+	$dif = $now->diffInHours($thatDay);
+	if($dif > 24){
+		DB::table('password_resets')->where('token', $token)->delete();
+		return "error! invalid token";
+	}
+
+	$user = User::where('email', $pwdReset->email)->first();
+	$user->password = Hash::make($request->password);
+	$user->save();
+	return "Done!";
+})->name('auth.reset-pwd');
 
 Route::get(App\Category::CATE_URL.'{cateSlug}', 'HomeController@cate')->name('cate.detail');
 
