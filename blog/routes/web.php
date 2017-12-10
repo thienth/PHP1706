@@ -109,7 +109,83 @@ Route::post('auth-reset-password', function(Request $request) {
 
 Route::get(App\Category::CATE_URL.'{cateSlug}', 'HomeController@cate')->name('cate.detail');
 
+// Route::get('set-session/{key}/{value}', function($key, $value){
+// 	Session::put($key, $value);
+	
+// 	return $key . "-" . $value;
+// });
+// Route::get('get-session/{key}', function($key){
+// 	dd(Session::has('name'));
+// 	return Session::get($key);
+// });
+
+// Route::get('flash-ss/{value}', function($value){
+
+// 	Session::flash('thienth', $value);
+
+// 	return redirect(route('get-flash'));
+// });
+// Route::get('get-flash-ss', function(){
+// 	echo Session::get('thienth');
+// })->name('get-flash');
+
+// Route::get('create-cookie', function(Request $request){
+// 	return response('Done!')->cookie(
+// 		'thienth', 'php 1706', 1
+// 	);
+// });
+
+// Route::get('get-cookie-value', function(Request $request){
+// 	return $request->cookie('thienth');
+// });
+
+Route::get('list-post', function(Request $request){
+	$posts = App\Post::take(10)->get();
+	$likedIds = $request->cookie('liked_id');
+	$likedIds = explode('|', $likedIds);
+	for ($i=0; $i < count($posts); $i++) { 
+		if(in_array($posts[$i]->id, $likedIds)){
+			$posts[$i]->liked = true;
+		}else{
+			$posts[$i]->liked = false;
+		}
+	}
+	return view('check-cookie', compact('posts'));
+});
+
+Route::get('clicked-like/{id}', function(Request $request){
+	// get all cookies
+	$likedIds = $request->cookie('liked_id');
+	$result = false;
+	if(!$likedIds){
+		$likedIds = "$request->id";
+		$result = true;
+	}else{
+		$likedIds = explode('|', $likedIds);
+		if(!in_array($request->id, $likedIds)){
+			array_push($likedIds, $request->id);
+			$likedIds = implode('|', $likedIds);
+			$result = true;
+		}else{
+			for ($i=count($likedIds)-1; $i >= 0 ; $i--) { 
+				if($likedIds[$i] == $request->id){
+					array_splice($likedIds, $i, 1);
+					break;
+				}
+			}
+			$likedIds = implode('|', $likedIds);
+		}
+	}
+	return response()->json($result)->cookie('liked_id', $likedIds, 60*24*365);
+})->name('clicked-like');
+
+
+
+
+
+
+
+
+
 Route::get('/{slugUrl}', 'HomeController@detail')->name('post.detail');
-
-
 

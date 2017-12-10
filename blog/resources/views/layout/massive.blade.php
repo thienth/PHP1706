@@ -59,5 +59,6 @@
     
     </div>
     @include('sub.client.js')
+    @yield('js')
 </body>
 </html>
