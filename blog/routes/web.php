@@ -14,6 +14,23 @@
 Route::get('/', 
 	'HomeController@index')->name('homepage');
 
+use App\Category;
+Route::get('get-list-category', function(){
+	$cates = Category::all();
+	$listSortedCate = get_options($cates, 0, "", 10);
+	dd($listSortedCate);
+});
+
+Route::get('ajax-category', function(){
+	$cate = Category::where('parent_id', 0)->get();
+	return view('ajax-category', compact('cate'));
+});
+
+use Illuminate\Http\Request;
+Route::post('get-child', function(Request $request){
+	$childs = Category::where('parent_id', $request->parentId)->get();
+	return response()->json($childs);
+})->name('cate.child');
 
 // Auth route
 Route::get('cp-login', 'Auth\LoginController@login')->name('login');
@@ -39,7 +56,7 @@ Route::get('send-mail', function() {
 	return 'done!';
 });
 
-use Illuminate\Http\Request;
+
 use App\PasswordReset;
 use Carbon\Carbon;
 use App\User;
